@@ -1,0 +1,16 @@
+- ? skeleton
+- ? recommendations
+- ? viewed
+- useMeta
+- personal area
+  - favorites
+  - statistic
+  - delivery
+    - cost delivery
+  - purchased
+- comments
+- scroll after router go
+- map
+- rating
+- 404 page
+- header search
