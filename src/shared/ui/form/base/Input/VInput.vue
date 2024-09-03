@@ -82,7 +82,7 @@ function getValue(event: Event) {
   font-size: 16px;
   line-height: 1.33;
   width: 100%;
-  border: 0 none;
+  border: 1px solid var(--color__grey);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

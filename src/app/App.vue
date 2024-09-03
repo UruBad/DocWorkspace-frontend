@@ -10,9 +10,9 @@
     <template v-slot:footer>
       <TheFooter />
     </template>
-  </MainLayout>
 
-  <ButtonSocial />
+    <ButtonSocial />
+  </MainLayout>
 
   <TheAlerts />
 
@@ -58,7 +58,7 @@ async function login() {
     const { data } = await SessionApi.getToken(session.refreshToken);
 
     session.setTokens({
-      idToken: data.id_token,
+      accessToken: data.accessToken,
       refreshToken: data.refresh_token,
     });
 

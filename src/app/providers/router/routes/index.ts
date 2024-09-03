@@ -10,6 +10,7 @@ import { route as personalAreaRoute } from "./personal-area";
 import { route as patientAreaRoute } from "./patient-area";
 import { route as loginRoute } from "./login";
 import { route as signUpRoute } from "./sign-up";
+import { route as adminRoute } from "./admin";
 export const routes: readonly RouteRecordRaw[] = [
   mainRoute,
   cartRoute,
@@ -21,4 +22,5 @@ export const routes: readonly RouteRecordRaw[] = [
   UIKitRoute,
   notFoundRoute,
   patientAreaRoute,
+  adminRoute,
 ] as const;

@@ -1,5 +1,6 @@
 import { routeName as cart } from './routes/cart'
 import { routeName as login } from './routes/login'
+import { routeName as admin } from './routes/admin'
 import { routeName as signUp } from './routes/sign-up'
 import { routeName as category } from './routes/category'
 import { routeName as product } from './routes/product'
@@ -29,5 +30,6 @@ export const pages = {
   profile,
   signUp,
   UIKit,
-  wallet
+  wallet,
+  admin
 } as const

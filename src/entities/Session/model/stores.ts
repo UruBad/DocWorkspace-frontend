@@ -6,25 +6,14 @@ import {
   TOKEN_EXPIRES_IN,
   TOKEN_KEY,
 } from "@/shared/config";
-import type { UserModel } from "@/entities/User";
 import { api } from "../api";
 import { useAlertsStore } from "@/shared/ui/TheAlerts";
 import useTimeout from "@/shared/lib/use/useTimeout";
+import type { ISessionUser, ITokens } from './types';
 
 const namespaced = "session";
 
-interface ITokens {
-  idToken: string;
-  refreshToken: string;
-}
-
 const defaultUserName = "Anonymous";
-const defaultUserGender = "male" as UserModel.EGender;
-
-interface ISessionUser extends UserModel.IUser {
-  createdAt?: number;
-  updatedAt?: number;
-}
 
 export const useSessionStore = defineStore(namespaced, () => {
   const { showError } = useAlertsStore();
@@ -77,7 +66,7 @@ export const useSessionStore = defineStore(namespaced, () => {
 
   function setTokens(data: ITokens) {
     clearTimeoutGetToken();
-    setToken(data.idToken);
+    setToken(data.accessToken);
     setRefreshToken(data.refreshToken);
     setTimeoutGetToken();
   }
@@ -88,7 +77,6 @@ export const useSessionStore = defineStore(namespaced, () => {
     services: [],
     id: "",
     username: defaultUserName,
-    gender: defaultUserGender,
     email: "",
   });
 
@@ -97,7 +85,6 @@ export const useSessionStore = defineStore(namespaced, () => {
   function setUser(data: ISessionUser) {
     user.id = data.id;
     user.username = data.username;
-    user.gender = data.gender;
     user.email = data.email;
     user.cartId = data.cartId;
     user.favoritesId = data.favoritesId;

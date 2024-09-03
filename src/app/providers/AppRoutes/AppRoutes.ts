@@ -62,6 +62,10 @@ export class AppRoutes {
   static getNotFound() {
     return getRoute(AppPages.notFound, {})
   }
+
+  static getAdmin() {
+    return getRoute(AppPages.admin, {})
+  }
 }
 
 // TODO необязательный 2й параметр
