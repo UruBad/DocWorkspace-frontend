@@ -7,6 +7,6 @@ export const route: RouteRecordRaw = {
   path: '/admin',
   component: () => import('@/pages/admin'),
   meta: {
-    layout: 'empty'
+    layout: 'admin'
   },
 }

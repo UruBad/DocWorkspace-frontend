@@ -10,3 +10,4 @@ export * from "./ButtonBase";
 export * from "./ButtonCollapse";
 export * from "./ButtonSocial";
 export * from "./ButtonClose";
+export * from "./ButtonOff";

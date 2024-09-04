@@ -1,11 +1,21 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  $END$
+  <ButtonSm class="button-remove">
+    <template v-slot:icon>
+      <IconOff :width="iconSize" :height="iconSize" />
+    </template>
+  </ButtonSm>
 </template>
 
-<style scoped lang="scss">
+<script setup lang="ts">
+import { ButtonSm } from "@/shared/ui/buttons";
+import { EAppPixelSize } from "@/shared/lib/types/app";
+import { IconOff } from '@/shared/ui/icons';
 
-</style>
+interface IButtonOff {
+  iconSize?: EAppPixelSize;
+}
+
+withDefaults(defineProps<IButtonOff>(), {
+  iconSize: EAppPixelSize.ls,
+});
+</script>

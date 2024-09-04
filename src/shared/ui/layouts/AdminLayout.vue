@@ -1,11 +1,11 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  $END$
+  <slot name="header" />
+  <main class="main">
+    <slot name="navigation" />
+    <div class="page-wrapper">
+      <router-view />
+    </div>
+  </main>
 </template>
-
-<style scoped lang="scss">
-
-</style>
+<script setup lang="ts">
+</script>
