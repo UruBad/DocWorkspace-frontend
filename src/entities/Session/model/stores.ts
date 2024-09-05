@@ -9,7 +9,8 @@ import {
 import { api } from "../api";
 import { useAlertsStore } from "@/shared/ui/TheAlerts";
 import useTimeout from "@/shared/lib/use/useTimeout";
-import type { ISessionUser, ITokens } from './types';
+import type { ISessionUser, ITokens } from "./types";
+import { EGender } from "@/entities/User/model/types";
 
 const namespaced = "session";
 
@@ -56,11 +57,11 @@ export const useSessionStore = defineStore(namespaced, () => {
   async function getToken() {
     try {
       const { data } = await api.getToken(refreshToken.value);
-      setToken(data.id_token);
-      setRefreshToken(data.refresh_token);
+      setToken(data.accessToken);
+      setRefreshToken(data.accessToken);
       setTimeoutGetToken();
-    } catch (e: any) {
-      showError(e.message);
+    } catch (e: unknown) {
+      if (e instanceof Error) showError(e.message);
     }
   }
 
@@ -78,6 +79,7 @@ export const useSessionStore = defineStore(namespaced, () => {
     id: "",
     username: defaultUserName,
     email: "",
+    gender: EGender.male,
   });
 
   const isAuth = computed(() => Boolean(user.id));
@@ -90,6 +92,7 @@ export const useSessionStore = defineStore(namespaced, () => {
     user.favoritesId = data.favoritesId;
     user.walletId = data.walletId;
     user.orderIds = data.orderIds;
+    user.gender = data.gender;
   }
 
   function logout() {
@@ -103,7 +106,7 @@ export const useSessionStore = defineStore(namespaced, () => {
       services: [],
       id: "",
       username: defaultUserName,
-      gender: defaultUserGender,
+      gender: EGender.male,
       email: "",
     });
   }

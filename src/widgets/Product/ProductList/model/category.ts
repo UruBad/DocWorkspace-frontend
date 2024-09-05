@@ -1,10 +1,10 @@
-import type { IProductListModel } from './types'
-import { ProductApi, ProductModel } from '@/entities/Product'
-import type { DummyJsonApi } from '@/shared/api'
-import { DummyJsonModel } from '@/shared/api'
+import type { IProductListModel } from "./types";
+import { ProductApi, ProductModel } from "@/entities/Product";
+import type { DummyJsonApi } from "@/shared/api";
+import { DummyJsonModel } from "@/shared/api";
 
 interface IQuery extends DummyJsonApi.IBaseQuery {
-  category: string
+  category: string;
 }
 
 export function useCategoryModel(): IProductListModel<IQuery> {
@@ -17,19 +17,23 @@ export function useCategoryModel(): IProductListModel<IQuery> {
     page,
     countPages,
     isLoading,
-    changeLimit
-  } = DummyJsonModel.useQueryListModel<ProductModel.IProduct, ProductModel.IProductGetResponse, IQuery>({
+    changeLimit,
+  } = DummyJsonModel.useQueryListModel<
+    ProductModel.IProduct,
+    ProductModel.IProductGetResponse,
+    IQuery
+  >({
     apiHandler: fetchProducts,
     mapper: ProductModel.getMapped,
-    initQuery: DummyJsonModel.QUERY_DEFAULT
-  })
+    initQuery: DummyJsonModel.QUERY_DEFAULT,
+  });
 
   async function fetchProducts(params?: IQuery) {
     if (!params?.category) {
-      throw new Error('Unable to determine category to load list')
+      throw new Error("Unable to determine category to load list");
     }
 
-    return ProductApi.getProductsOf(params.category, params)
+    return ProductApi.getProductsOf(params.category, params);
   }
 
   return {
@@ -41,6 +45,6 @@ export function useCategoryModel(): IProductListModel<IQuery> {
     page,
     countPages,
     isLoading,
-    changeLimit
-  }
+    changeLimit,
+  };
 }

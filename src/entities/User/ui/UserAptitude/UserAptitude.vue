@@ -32,8 +32,6 @@
 import type { IAptitude } from "../../model";
 import { computed } from "vue";
 import { BASE_URL } from "@/shared/config";
-import { ButtonBase } from "@/shared/ui/buttons";
-import { CartProductCard } from "@/entities/Cart";
 
 interface IProps {
   aptitude: IAptitude;

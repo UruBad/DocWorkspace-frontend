@@ -12,18 +12,15 @@
           :key="item.id"
           :cart-product="item"
         >
-          <template v-slot:input-quantity>
-            <ChangeQuantity
-              :id="item.id"
-              :quantity="item.quantity"
-            />
+          <template #input-quantity>
+            <ChangeQuantity :id="item.id" :quantity="item.quantity" />
           </template>
 
-          <template v-slot:button-like>
+          <template #button-like>
             <AddToFavorites :id="item.id" />
           </template>
 
-          <template v-slot:button-remove>
+          <template #button-remove>
             <RemoveFromCart :id="item.id" />
           </template>
         </CartProductCard>
@@ -33,10 +30,7 @@
 
       <aside class="cart-page__aside">
         <CartTotal>
-          <template
-            v-if="store.cartProducts.length"
-            v-slot:order
-          >
+          <template v-if="store.cartProducts.length" #order>
             <div class="relative">
               <CreateOrderForm />
 
@@ -54,19 +48,19 @@
 </template>
 
 <script setup lang="ts">
-import { useAppRoutes } from '@/app/providers'
-import { ChangeQuantity } from '@/features/Cart/ChangeQuantity'
-import { RemoveFromCart } from '@/features/Cart/RemoveFromCart'
-import { AddToFavorites } from '@/features/Product/AddToFavorites'
-import { CreateOrderForm } from '@/features/Order/create-order'
-import { CartTotal, CartProductCard, CartModel } from '@/entities/Cart'
-import { SessionModel } from '@/entities/Session'
+import { useAppRoutes } from "@/app/providers";
+import { ChangeQuantity } from "@/features/Cart/ChangeQuantity";
+import { RemoveFromCart } from "@/features/Cart/RemoveFromCart";
+import { AddToFavorites } from "@/features/Product/AddToFavorites";
+import { CreateOrderForm } from "@/features/Order/create-order";
+import { CartTotal, CartProductCard, CartModel } from "@/entities/Cart";
+import { SessionModel } from "@/entities/Session";
 
-const store = CartModel.useCartStore()
-const session = SessionModel.useSessionStore()
-const appRoutes = useAppRoutes()
+const store = CartModel.useCartStore();
+const session = SessionModel.useSessionStore();
+const appRoutes = useAppRoutes();
 </script>
 
 <style lang="scss">
-@import './styles';
+@import "./styles";
 </style>

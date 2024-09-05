@@ -1,1 +1,1 @@
-export { default as ButtonScrollTop } from './ButtonScrollTop.vue'
+export { default as ButtonScrollTop } from "./ButtonScrollTop.vue";

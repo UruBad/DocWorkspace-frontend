@@ -1,1 +1,1 @@
-export { default as ButtonRefillWallet } from './ButtonRefillWallet.vue'
+export { default as ButtonRefillWallet } from "./ButtonRefillWallet.vue";

@@ -28,7 +28,8 @@ const { isBoolean: isExtended, toggle } = useIsBoolean();
 interface IProps {
   problem: IProblem;
 }
-const props = defineProps<IProps>();
+
+defineProps<IProps>();
 
 const classes = computed(() => {
   const rootClass = "user-problem__wrapper-block__content";

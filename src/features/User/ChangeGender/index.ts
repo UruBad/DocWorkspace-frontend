@@ -1,1 +1,1 @@
-export { default as ChangeGender } from './ChangeGender.vue'
+export { default as ChangeGender } from "./ChangeGender.vue";

@@ -1,10 +1,7 @@
 <template>
   <aside class="sidebar">
     <div class="scroll-sidebar">
-      <VNavigation
-        class="scroll-sidebar__nav"
-        :nav-list="navList"
-      />
+      <VNavigation class="scroll-sidebar__nav" :nav-list="navList" />
     </div>
     <div class="sidebar-footer">
       <div class="row">
@@ -17,14 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { type INavItem, VNavigation } from '@/shared/ui/navigation';
-import { ButtonOff } from '@/shared/ui/buttons';
+import { type INavItem, VNavigation } from "@/shared/ui/navigation";
+import { ButtonOff } from "@/shared/ui/buttons";
 
-defineProps<{ navList: INavItem[] }>()
+defineProps<{ navList: INavItem[] }>();
 </script>
 
-
-
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

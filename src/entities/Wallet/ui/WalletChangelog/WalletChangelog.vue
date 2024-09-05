@@ -1,10 +1,7 @@
 <template>
   <span v-if="!store.changelog.length">No records</span>
 
-  <div
-    v-else
-    class="column gap-s"
-  >
+  <div v-else class="column gap-s">
     <WalletChangelogCard
       v-for="item of changelog"
       :key="item.date"
@@ -14,12 +11,12 @@
 </template>
 
 <script setup lang="ts">
-import { WalletChangelogCard } from '../WalletChangelogCard'
+import { WalletChangelogCard } from "../WalletChangelogCard";
 
-import { useWalletStore } from '../../model'
-import { computed } from 'vue'
+import { useWalletStore } from "../../model";
+import { computed } from "vue";
 
-const store = useWalletStore()
+const store = useWalletStore();
 
-const changelog = computed(() => store.changelog.slice().reverse())
+const changelog = computed(() => store.changelog.slice().reverse());
 </script>

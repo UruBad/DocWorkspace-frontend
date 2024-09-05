@@ -1,3 +1,3 @@
-export * from './LinkToCart'
-export * from './CartTotal'
-export * from './CartProductCard'
+export * from "./LinkToCart";
+export * from "./CartTotal";
+export * from "./CartProductCard";

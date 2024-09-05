@@ -1,2 +1,2 @@
-export * from './WalletBalance'
-export * from './WalletChangelog'
+export * from "./WalletBalance";
+export * from "./WalletChangelog";

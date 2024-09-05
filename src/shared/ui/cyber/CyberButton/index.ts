@@ -1,1 +1,1 @@
-export { default as CyberButton } from './CyberButton.vue'
+export { default as CyberButton } from "./CyberButton.vue";

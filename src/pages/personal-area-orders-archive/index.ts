@@ -1,2 +1,2 @@
-import ArchivePage from './ui/ArchivePage.vue'
-export default ArchivePage
+import ArchivePage from "./ui/ArchivePage.vue";
+export default ArchivePage;

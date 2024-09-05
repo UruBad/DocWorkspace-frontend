@@ -1,31 +1,31 @@
-import type { Ref } from 'vue'
-import { ref } from 'vue'
+import type { Ref } from "vue";
+import { ref } from "vue";
 
 interface IUseRefNumber {
-  value: Ref<number>
-  setValue: (num: number) => void
-  increment: (num?: number) => void
-  decrement: (num?: number) => void
+  value: Ref<number>;
+  setValue: (num: number) => void;
+  increment: (num?: number) => void;
+  decrement: (num?: number) => void;
 }
 
 export function useRefNumber(init: number): IUseRefNumber {
-  const value = ref(init)
+  const value = ref(init);
 
   function increment(num: number = 1) {
-    value.value += num
+    value.value += num;
   }
   function decrement(num: number = 1) {
-    value.value -= num
+    value.value -= num;
   }
 
   function setValue(num: number) {
-    value.value = num
+    value.value = num;
   }
 
   return {
     value,
     increment,
     decrement,
-    setValue
-  }
+    setValue,
+  };
 }

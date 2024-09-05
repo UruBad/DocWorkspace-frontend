@@ -1,2 +1,2 @@
-import CyberTag from './CyberTag.vue'
-export default CyberTag
+import CyberTag from "./CyberTag.vue";
+export default CyberTag;

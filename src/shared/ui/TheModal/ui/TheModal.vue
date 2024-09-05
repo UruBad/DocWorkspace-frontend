@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { useModalStore } from "../model";
-import { ButtonBase, ButtonClose, ButtonRemove } from "@/shared/ui/buttons";
+import { ButtonBase, ButtonClose } from "@/shared/ui/buttons";
 
 const store = useModalStore();
 const { modal, destroy } = store;

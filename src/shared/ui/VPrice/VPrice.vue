@@ -6,10 +6,7 @@
       :options="PRICE_COUNT_UP_OPTIONS"
     />
 
-    <del
-      v-if="hasDiscount"
-      class="price__old"
-    >
+    <del v-if="hasDiscount" class="price__old">
       <CountUp
         :end-val="price"
         :duration="COUNT_UP_DURATION"
@@ -20,30 +17,33 @@
 </template>
 
 <script setup lang="ts">
-import CountUp from 'vue-countup-v3'
-import { computed } from 'vue'
+import CountUp from "vue-countup-v3";
+import { computed } from "vue";
 
-import { COUNT_UP_DURATION, PRICE_COUNT_UP_OPTIONS } from '@/shared/ui/VPrice/const'
+import {
+  COUNT_UP_DURATION,
+  PRICE_COUNT_UP_OPTIONS,
+} from "@/shared/ui/VPrice/const";
 
 const props = defineProps<{
-  price: number
-  discount?: number
-  priceDiscount?: number
-}>()
+  price: number;
+  discount?: number;
+  priceDiscount?: number;
+}>();
 
-const hasDiscount = computed(() => props.discount || props.priceDiscount)
+const hasDiscount = computed(() => props.discount || props.priceDiscount);
 
 const currentPrice = computed(() => {
   if (props.discount) {
-    return props.price * ((100 - props.discount) / 100)
+    return props.price * ((100 - props.discount) / 100);
   }
 
-  if (props.priceDiscount) return props.priceDiscount
+  if (props.priceDiscount) return props.priceDiscount;
 
-  return props.price
-})
+  return props.price;
+});
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

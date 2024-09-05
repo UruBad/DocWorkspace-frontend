@@ -1,8 +1,5 @@
 <template>
-  <button
-    class="button reset"
-    type="button"
-  >
+  <button class="button reset" type="button">
     <BorderDecorate
       class="button__border-decorate button__border-decorate--before"
       :class="beforeBgColor"
@@ -24,25 +21,28 @@
 </template>
 
 <script setup lang="ts">
-import { BorderDecorate, EBorderDecorateIcons } from '@/shared/ui/BorderDecorate'
-import { EAppColor } from '@/shared/lib/types/app'
+import {
+  BorderDecorate,
+  EBorderDecorateIcons,
+} from "@/shared/ui/BorderDecorate";
+import { EAppColor } from "@/shared/lib/types/app";
 
 interface IButton {
-  txt: string
-  borderLeftIcon?: EBorderDecorateIcons
-  borderRightIcon?: EBorderDecorateIcons
-  beforeBgColor?: EAppColor
-  afterBgColor?: EAppColor
+  txt: string;
+  borderLeftIcon?: EBorderDecorateIcons;
+  borderRightIcon?: EBorderDecorateIcons;
+  beforeBgColor?: EAppColor;
+  afterBgColor?: EAppColor;
 }
 
 withDefaults(defineProps<IButton>(), {
   borderLeftIcon: EBorderDecorateIcons.inner,
   borderRightIcon: EBorderDecorateIcons.outer,
   beforeBgColor: EAppColor.blue,
-  afterBgColor: EAppColor.black
-})
+  afterBgColor: EAppColor.black,
+});
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

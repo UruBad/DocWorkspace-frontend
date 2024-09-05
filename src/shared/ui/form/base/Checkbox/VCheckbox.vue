@@ -1,8 +1,5 @@
 <template>
-  <label
-    class="checkbox row gap-xs"
-    :class="classes"
-  >
+  <label class="checkbox row gap-xs" :class="classes">
     <input
       type="checkbox"
       class="checkbox__input"
@@ -21,43 +18,39 @@
       {{ label }}
     </span>
 
-    <small
-      v-if="error"
-      class="checkbox__error red"
-      >{{ error }}</small
-    >
+    <small v-if="error" class="checkbox__error red">{{ error }}</small>
   </label>
 </template>
 
 <script setup lang="ts">
-import IconBg from './icons/IconBg.vue'
-import IconChecked from './icons/IconChecked.vue'
-import { computed } from 'vue'
+import IconBg from "./icons/IconBg.vue";
+import IconChecked from "./icons/IconChecked.vue";
+import { computed } from "vue";
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"]);
 
 interface IVCheckbox {
-  modelValue?: boolean
-  label: string
-  name?: string
-  isDisabled?: boolean
-  error?: string
+  modelValue?: boolean;
+  label: string;
+  name?: string;
+  isDisabled?: boolean;
+  error?: string;
 }
 
 const props = withDefaults(defineProps<IVCheckbox>(), {
-  modelValue: false
-})
+  modelValue: false,
+});
 
 const classes = computed(() => ({
-  'disabled events-none': props.isDisabled,
-  error: props.error
-}))
+  "disabled events-none": props.isDisabled,
+  error: props.error,
+}));
 
 function onChange() {
-  emit('update:modelValue', !props.modelValue)
+  emit("update:modelValue", !props.modelValue);
 }
 </script>
 
 <style lang="scss">
-@import 'styles/index';
+@import "styles/index";
 </style>

@@ -1,1 +1,1 @@
-export { default as LinkToCart } from './LinkToCart.vue'
+export { default as LinkToCart } from "./LinkToCart.vue";

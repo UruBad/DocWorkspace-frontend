@@ -1,1 +1,1 @@
-export { default as VForm } from './VForm.vue'
+export { default as VForm } from "./VForm.vue";

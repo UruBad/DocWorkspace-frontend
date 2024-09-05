@@ -1,86 +1,92 @@
-import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
-import type { Ref } from 'vue'
-import type { ComputedRef } from 'vue'
-import type { ICartProduct, ICartTotal } from './types'
-import { api } from '../api'
-import { useLocalStorage } from '@/shared/lib/browser'
-import { useReactiveArray } from '@/shared/lib/use/base/useReactiveArray'
-import { findBy } from '@/shared/lib/utils/array'
-import { useRefString } from '@/shared/lib/use/base/useRefString'
+import { defineStore } from "pinia";
+import { computed, ref } from "vue";
+import type { Ref } from "vue";
+import type { ComputedRef } from "vue";
+import type { ICartProduct, ICartTotal } from "./types";
+import { api } from "../api";
+import { useLocalStorage } from "@/shared/lib/browser";
+import { useReactiveArray } from "@/shared/lib/use/base/useReactiveArray";
+import { findBy } from "@/shared/lib/utils/array";
+import { useRefString } from "@/shared/lib/use/base/useRefString";
 
 interface ICartStore {
-  cartId: Ref<string>
-  setCartId: (val: string) => void
-  loadCartById: () => Promise<void>
+  cartId: Ref<string>;
+  setCartId: (val: string) => void;
+  loadCartById: () => Promise<void>;
 
-  total: Ref<number>
-  totalQuantity: Ref<number>
-  totalProducts: Ref<number>
-  discountedTotal: Ref<number>
-  setCart: (data: ICartTotal) => void
+  total: Ref<number>;
+  totalQuantity: Ref<number>;
+  totalProducts: Ref<number>;
+  discountedTotal: Ref<number>;
+  setCart: (data: ICartTotal) => void;
 
-  cartProducts: ICartProduct[]
-  findInCart: (id: number) => ICartProduct | undefined
-  cartHasProduct: (id: number) => boolean
-  inCart: ComputedRef<number>
-  add: (item: ICartProduct) => void
-  remove: (id: number) => void
+  cartProducts: ICartProduct[];
+  findInCart: (id: number) => ICartProduct | undefined;
+  cartHasProduct: (id: number) => boolean;
+  inCart: ComputedRef<number>;
+  add: (item: ICartProduct) => void;
+  remove: (id: number) => void;
 
-  updateLS: () => void
+  updateLS: () => void;
 
-  reset: () => void
-  clearCart: () => void
-  resetLS: () => void
+  reset: () => void;
+  clearCart: () => void;
+  resetLS: () => void;
 }
 
-const NAMESPACE = 'cart'
+const NAMESPACE = "cart";
 
 export const useCartStore = defineStore(NAMESPACE, (): ICartStore => {
-  const { value: cartId, setValue: setCartId } = useRefString('')
+  const { value: cartId, setValue: setCartId } = useRefString("");
 
   async function loadCartById() {
-    const { data } = await api.getById(cartId.value)
+    const { data } = await api.getById(cartId.value);
 
-    setCart(data)
-    refresh(data.products || [])
+    setCart(data);
+    refresh(data.products || []);
   }
 
-  const { value: LSCart, setLSValue: setLSCart } = useLocalStorage<ICartTotal>(NAMESPACE, {
-    total: 0,
-    totalQuantity: 0,
-    totalProducts: 0,
-    discountedTotal: 0
-  })
+  const { value: LSCart, setLSValue: setLSCart } = useLocalStorage<ICartTotal>(
+    NAMESPACE,
+    {
+      total: 0,
+      totalQuantity: 0,
+      totalProducts: 0,
+      discountedTotal: 0,
+    }
+  );
 
-  const total = ref(LSCart.total)
-  const totalQuantity = ref(LSCart.totalQuantity)
-  const totalProducts = ref(LSCart.totalProducts)
-  const discountedTotal = ref(LSCart.discountedTotal)
+  const total = ref(LSCart.total);
+  const totalQuantity = ref(LSCart.totalQuantity);
+  const totalProducts = ref(LSCart.totalProducts);
+  const discountedTotal = ref(LSCart.discountedTotal);
 
-  const { value: LSCartProducts, setLSValue: setLSCartProducts } = useLocalStorage<ICartProduct[]>(
-    `${NAMESPACE}-products`,
-    []
-  )
+  const { value: LSCartProducts, setLSValue: setLSCartProducts } =
+    useLocalStorage<ICartProduct[]>(`${NAMESPACE}-products`, []);
 
-  const { array: cartProducts, add, remove, refresh } = useReactiveArray(LSCartProducts)
+  const {
+    array: cartProducts,
+    add,
+    remove,
+    refresh,
+  } = useReactiveArray(LSCartProducts);
 
-  const inCart = computed(() => cartProducts.length)
+  const inCart = computed(() => cartProducts.length);
 
   function cartHasProduct(id: number) {
-    return Boolean(findInCart(id))
+    return Boolean(findInCart(id));
   }
 
   function setCart(data: ICartTotal) {
-    total.value = data.total
-    totalQuantity.value = data.totalQuantity
-    totalProducts.value = data.totalProducts
-    discountedTotal.value = data.discountedTotal
+    total.value = data.total;
+    totalQuantity.value = data.totalQuantity;
+    totalProducts.value = data.totalProducts;
+    discountedTotal.value = data.discountedTotal;
   }
 
   function updateLS() {
-    updateLSCart()
-    updateLSCartProducts()
+    updateLSCart();
+    updateLSCartProducts();
   }
 
   function updateLSCart() {
@@ -88,21 +94,21 @@ export const useCartStore = defineStore(NAMESPACE, (): ICartStore => {
       total: total.value,
       totalQuantity: totalQuantity.value,
       totalProducts: totalProducts.value,
-      discountedTotal: discountedTotal.value
-    })
+      discountedTotal: discountedTotal.value,
+    });
   }
 
   function updateLSCartProducts() {
-    setLSCartProducts(cartProducts)
+    setLSCartProducts(cartProducts);
   }
 
   function findInCart(id: number) {
-    return findBy(id, cartProducts)
+    return findBy(id, cartProducts);
   }
 
   function reset() {
-    setCartId('')
-    clearCart()
+    setCartId("");
+    clearCart();
   }
 
   function clearCart() {
@@ -110,9 +116,9 @@ export const useCartStore = defineStore(NAMESPACE, (): ICartStore => {
       total: 0,
       totalProducts: 0,
       discountedTotal: 0,
-      totalQuantity: 0
-    })
-    refresh([])
+      totalQuantity: 0,
+    });
+    refresh([]);
   }
 
   function resetLS() {
@@ -120,9 +126,9 @@ export const useCartStore = defineStore(NAMESPACE, (): ICartStore => {
       total: 0,
       totalQuantity: 0,
       totalProducts: 0,
-      discountedTotal: 0
-    })
-    setLSCartProducts([])
+      discountedTotal: 0,
+    });
+    setLSCartProducts([]);
   }
 
   return {
@@ -147,6 +153,6 @@ export const useCartStore = defineStore(NAMESPACE, (): ICartStore => {
 
     reset,
     clearCart,
-    resetLS
-  }
-})
+    resetLS,
+  };
+});

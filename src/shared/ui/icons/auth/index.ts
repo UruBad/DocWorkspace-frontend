@@ -1,1 +1,1 @@
-export { default as IconLogout } from './IconLogout.vue'
+export { default as IconLogout } from "./IconLogout.vue";

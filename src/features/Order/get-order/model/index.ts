@@ -1,21 +1,21 @@
-import type { FirebaseApi } from '@/shared/api'
+import type { FirebaseApi } from "@/shared/api";
 
-import { OrderApi, OrderModel } from '@/entities/Order'
+import { OrderApi, OrderModel } from "@/entities/Order";
 
 export function useGetOrder() {
-  const orderStore = OrderModel.useOrderStore()
+  const orderStore = OrderModel.useOrderStore();
 
   async function getOrder(id: FirebaseApi.TId) {
-    const statusId = OrderModel.EOrderStatus.purchased
+    const statusId = OrderModel.EOrderStatus.purchased;
 
-    await OrderApi.patchStatus(id, { statusId })
+    await OrderApi.patchStatus(id, { statusId });
 
-    const order = orderStore.orders[id]
+    const order = orderStore.orders[id];
 
-    order.statusId = statusId
+    order.statusId = statusId;
   }
 
   return {
-    getOrder
-  }
+    getOrder,
+  };
 }

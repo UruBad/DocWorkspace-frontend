@@ -1,6 +1,6 @@
 export const enum EIconsName {
-  inner = 'inner',
-  outer = 'outer',
-  top = 'top',
-  bottom = 'bottom'
+  inner = "inner",
+  outer = "outer",
+  top = "top",
+  bottom = "bottom",
 }

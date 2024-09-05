@@ -1,2 +1,2 @@
-export * as CreateOrderModel from './model'
-export * from './ui'
+export * as CreateOrderModel from "./model";
+export * from "./ui";

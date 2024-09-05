@@ -1,15 +1,15 @@
-import type { IProduct, IProductGetResponse, IProductResponse } from './types'
+import type { IProduct, IProductGetResponse, IProductResponse } from "./types";
 
 export function mapProductResponse(item: IProductResponse): IProduct {
   return {
     ...item,
-    images: item.images.map(src => ({
+    images: item.images.map((src) => ({
       src,
-      alt: item.title
-    }))
-  }
+      alt: item.title,
+    })),
+  };
 }
 
 export function getMapped(data: IProductGetResponse) {
-  return data.products.map(mapProductResponse)
+  return data.products.map(mapProductResponse);
 }

@@ -1,14 +1,14 @@
-import { EGender } from '@/entities/User/model/types'
+import { EGender } from "@/entities/User/model/types";
 
 export const USER_GENDER_OPTIONS = [
   {
     id: 1,
     value: EGender.male,
-    label: 'Male'
+    label: "Male",
   },
   {
     id: 2,
     value: EGender.female,
-    label: 'Female'
-  }
-]
+    label: "Female",
+  },
+];

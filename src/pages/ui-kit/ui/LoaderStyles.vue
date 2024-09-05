@@ -16,6 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import BarsLoader from '@/shared/ui/loaders/BarsLoader'
-import SpinnerLoader from '@/shared/ui/loaders/SpinnerLoader'
+import BarsLoader from "@/shared/ui/loaders/BarsLoader";
+import SpinnerLoader from "@/shared/ui/loaders/SpinnerLoader";
 </script>

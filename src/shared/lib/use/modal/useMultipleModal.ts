@@ -1,19 +1,19 @@
-import { useRefValue } from '@/shared/lib/use/base/useRefValue'
+import { useRefValue } from "@/shared/lib/use/base/useRefValue";
 
 export function useMultipleModal() {
-  const { value: isModal, setValue } = useRefValue('')
+  const { value: isModal, setValue } = useRefValue("");
 
   function openModal(name: string) {
-    setValue(name)
+    setValue(name);
   }
 
   function closeModal() {
-    setValue('')
+    setValue("");
   }
 
   return {
     isModal,
     openModal,
-    closeModal
-  }
+    closeModal,
+  };
 }

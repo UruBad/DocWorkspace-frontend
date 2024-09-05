@@ -1,2 +1,2 @@
-export * as PayOrderModel from './model'
-export * from './ui'
+export * as PayOrderModel from "./model";
+export * from "./ui";

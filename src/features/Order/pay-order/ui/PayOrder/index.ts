@@ -1,1 +1,1 @@
-export { default as PayOrder } from './PayOrder.vue'
+export { default as PayOrder } from "./PayOrder.vue";

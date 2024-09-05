@@ -1,12 +1,12 @@
-import { defineStore } from 'pinia'
-import { useResizeObserver } from '@/shared/lib/use/useResizeObserver'
+import { defineStore } from "pinia";
+import { useResizeObserver } from "@/shared/lib/use/useResizeObserver";
 
-const namespace = 'app'
+const namespace = "app";
 
 export const useAppStore = defineStore(namespace, () => {
-  const { screenWidth } = useResizeObserver(document.body)
+  const { screenWidth } = useResizeObserver(document.body);
 
   return {
-    screenWidth
-  }
-})
+    screenWidth,
+  };
+});

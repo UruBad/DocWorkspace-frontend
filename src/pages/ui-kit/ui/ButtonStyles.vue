@@ -2,17 +2,9 @@
   <section>
     <h2 class="mb-s">Buttons</h2>
 
-    <VButton
-      class="mb-s"
-      txt="toggle disabled"
-      @click="toggle"
-    />
+    <VButton class="mb-s" txt="toggle disabled" @click="toggle" />
 
-    <CyberButton
-      class="mb-s"
-      txt="Cyber button"
-      :disabled="!isDisabled"
-    />
+    <CyberButton class="mb-s" txt="Cyber button" :disabled="!isDisabled" />
 
     <div class="column gap-m">
       <div
@@ -35,17 +27,17 @@
   </section>
 </template>
 <script setup lang="ts">
-import { VButton } from '@/shared/ui/buttons'
-import { CyberButton } from '@/shared/ui/cyber'
-import useToggle from '@/shared/lib/use/useToggle'
+import { VButton } from "@/shared/ui/buttons";
+import { CyberButton } from "@/shared/ui/cyber";
+import useToggle from "@/shared/lib/use/useToggle";
 
-import { EBorderDecorateIcons } from '@/shared/ui/BorderDecorate'
+import { EBorderDecorateIcons } from "@/shared/ui/BorderDecorate";
 
-const texts: string[] = ['BUTTON', 'HOVER', 'FOCUS', 'DISABLED', 'ACTIVE']
+const texts: string[] = ["BUTTON", "HOVER", "FOCUS", "DISABLED", "ACTIVE"];
 
 interface IBorders {
-  bL: EBorderDecorateIcons
-  bR?: EBorderDecorateIcons
+  bL: EBorderDecorateIcons;
+  bR?: EBorderDecorateIcons;
 }
 
 const borders: IBorders[] = [
@@ -60,25 +52,25 @@ const borders: IBorders[] = [
   { bL: EBorderDecorateIcons.top },
   { bL: EBorderDecorateIcons.bottom },
   { bL: EBorderDecorateIcons.bottom, bR: EBorderDecorateIcons.top },
-  { bL: EBorderDecorateIcons.top, bR: EBorderDecorateIcons.bottom }
-]
+  { bL: EBorderDecorateIcons.top, bR: EBorderDecorateIcons.bottom },
+];
 
-const buttonList = borders.map(mapper)
+const buttonList = borders.map(mapper);
 
 interface IButtonItem {
-  txt: string
-  borderLeftIcon: EBorderDecorateIcons | undefined
-  borderRightIcon: EBorderDecorateIcons | undefined
+  txt: string;
+  borderLeftIcon: EBorderDecorateIcons | undefined;
+  borderRightIcon: EBorderDecorateIcons | undefined;
 }
 
 function mapper(item: IBorders): IButtonItem[] {
-  return texts.map(txt => ({
+  return texts.map((txt) => ({
     txt,
     borderLeftIcon: item.bL,
-    borderRightIcon: item.bR || item.bL
-  }))
+    borderRightIcon: item.bR || item.bL,
+  }));
 }
 
-const { isActive: isDisabled, toggle } = useToggle(true)
-const classes = ['', 'hover', 'focus', '', 'active']
+const { isActive: isDisabled, toggle } = useToggle(true);
+const classes = ["", "hover", "focus", "", "active"];
 </script>

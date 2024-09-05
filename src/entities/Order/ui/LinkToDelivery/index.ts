@@ -1,1 +1,1 @@
-export { default as LinkToDelivery } from './LinkToDelivery.vue'
+export { default as LinkToDelivery } from "./LinkToDelivery.vue";

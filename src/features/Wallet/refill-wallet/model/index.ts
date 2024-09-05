@@ -1,22 +1,22 @@
-import { WalletModel } from '@/entities/Wallet'
+import { WalletModel } from "@/entities/Wallet";
 
 export function useRefillWallet() {
-  const store = WalletModel.useWalletStore()
+  const store = WalletModel.useWalletStore();
 
   async function refill(sum: number) {
-    const balanceUpdated = store.balance + sum
+    const balanceUpdated = store.balance + sum;
 
     const changelogItem: WalletModel.IChangelogItem = {
       balance: balanceUpdated,
       date: Date.now(),
       sum,
-      operationTypeId: WalletModel.EOperationTypes.refill
-    }
+      operationTypeId: WalletModel.EOperationTypes.refill,
+    };
 
-    await store.updateAndSync(balanceUpdated, changelogItem)
+    await store.updateAndSync(balanceUpdated, changelogItem);
   }
 
   return {
-    refill
-  }
+    refill,
+  };
 }

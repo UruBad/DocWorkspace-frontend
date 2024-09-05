@@ -1,28 +1,28 @@
-import { ref } from 'vue'
-import type { Ref } from 'vue'
+import { ref } from "vue";
+import type { Ref } from "vue";
 
 interface IUseIsBoolean {
-  isBoolean: Ref<boolean>
-  setIs: (bool: boolean) => void
-  setTrue: () => void
-  setFalse: () => void
-  toggle: () => void
+  isBoolean: Ref<boolean>;
+  setIs: (bool: boolean) => void;
+  setTrue: () => void;
+  setFalse: () => void;
+  toggle: () => void;
 }
 
 export function useIsBoolean(init: boolean = false): IUseIsBoolean {
-  const isBoolean = ref(init)
+  const isBoolean = ref(init);
 
   function setIs(bool: boolean) {
-    isBoolean.value = bool
+    isBoolean.value = bool;
   }
   function setTrue() {
-    isBoolean.value = true
+    isBoolean.value = true;
   }
   function setFalse() {
-    isBoolean.value = false
+    isBoolean.value = false;
   }
   function toggle() {
-    isBoolean.value = !isBoolean.value
+    isBoolean.value = !isBoolean.value;
   }
 
   return {
@@ -30,6 +30,6 @@ export function useIsBoolean(init: boolean = false): IUseIsBoolean {
     setIs,
     setTrue,
     setFalse,
-    toggle
-  }
+    toggle,
+  };
 }

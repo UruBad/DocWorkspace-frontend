@@ -1,2 +1,2 @@
-export * as TheBurgerMenuModel from './model'
-export * from './ui'
+export * as TheBurgerMenuModel from "./model";
+export * from "./ui";

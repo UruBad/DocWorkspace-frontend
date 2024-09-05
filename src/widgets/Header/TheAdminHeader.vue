@@ -2,19 +2,16 @@
   <header class="admin-header">
     <nav class="navbar">
       <div class="navbar-header">
-        <router-link
-          class="navbar-header__link"
-          :to="appRoutes.getMain()"
-        >
-          <span class="navbar-header__link-logo">
-            <b>Doc</b>Workspace
-          </span>
+        <router-link class="navbar-header__link" :to="appRoutes.getMain()">
+          <span class="navbar-header__link-logo"> <b>Doc</b>Workspace </span>
         </router-link>
       </div>
       <div class="navbar-nav">
         <ul class="navbar-nav__list">
           <li class="navbar-nav__list-item">
-            <span class="navbar-nav__list-item__user">Markarn Doe</span>
+            <span class="navbar-nav__list-item__user">{{
+              session.user.email
+            }}</span>
           </li>
         </ul>
       </div>
@@ -34,8 +31,8 @@ const session = SessionModel.useSessionStore();
 .admin-header {
   position: relative;
   z-index: 50;
-  -webkit-box-shadow: 5px 0px 10px rgba(0,0,0,0.5);
-  box-shadow: 5px 0px 10px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
   height: 70px;
   background-color: var(--color__light-blue);
 
@@ -52,7 +49,7 @@ const session = SessionModel.useSessionStore();
       width: 240px;
       line-height: 70px;
       text-align: center;
-      background: rgba(0,0,0,0.05);
+      background: rgba(0, 0, 0, 0.05);
 
       &__link {
         width: 216px;
@@ -63,7 +60,7 @@ const session = SessionModel.useSessionStore();
         margin: 0px;
         padding: 0px 15px 0 0;
         color: var(--color__white);
-        margin-left: 1.5rem!important;
+        margin-left: 1.5rem !important;
         font-size: 26px;
       }
     }
@@ -76,7 +73,7 @@ const session = SessionModel.useSessionStore();
 
       &__list {
         flex-direction: row;
-        margin-right: auto!important;
+        margin-right: auto !important;
         padding-left: 0;
         margin-bottom: 0;
         list-style: none;

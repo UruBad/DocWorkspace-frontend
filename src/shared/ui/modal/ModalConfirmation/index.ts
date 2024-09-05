@@ -1,1 +1,1 @@
-export { default as ModalConfirmation } from './ModalConfirmation.vue'
+export { default as ModalConfirmation } from "./ModalConfirmation.vue";

@@ -11,17 +11,17 @@
 </template>
 
 <script setup lang="ts">
-import { VPagination } from '@/shared/ui/pagination'
-import { ref } from 'vue'
+import { VPagination } from "@/shared/ui/pagination";
+import { ref } from "vue";
 
-const page = ref(1)
-const count = ref(15)
+const page = ref(1);
+const count = ref(15);
 
 function setPage(value: number) {
-  page.value = value
+  page.value = value;
 }
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

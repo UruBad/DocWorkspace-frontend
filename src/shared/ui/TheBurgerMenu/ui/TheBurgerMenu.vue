@@ -16,12 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import { ButtonCross } from '@/shared/ui/buttons'
-import { useTheBurgerMenuStore } from '../model'
+import { ButtonCross } from "@/shared/ui/buttons";
+import { useTheBurgerMenuStore } from "../model";
 
-const store = useTheBurgerMenuStore()
+const store = useTheBurgerMenuStore();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

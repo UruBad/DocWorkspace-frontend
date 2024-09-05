@@ -1,2 +1,2 @@
-import PersonalAreaPage from './ui/PersonalAreaPage.vue'
-export default PersonalAreaPage
+import PersonalAreaPage from "./ui/PersonalAreaPage.vue";
+export default PersonalAreaPage;

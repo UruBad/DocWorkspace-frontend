@@ -1,2 +1,2 @@
-import OrdersPage from './ui/OrdersPage.vue'
-export default OrdersPage
+import OrdersPage from "./ui/OrdersPage.vue";
+export default OrdersPage;

@@ -1,1 +1,1 @@
-export { default as InfoHeaded } from './InfoHeaded.vue'
+export { default as InfoHeaded } from "./InfoHeaded.vue";

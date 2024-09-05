@@ -1,2 +1,2 @@
-import ColorStyles from './ColorStyles.vue'
-export { ColorStyles }
+import ColorStyles from "./ColorStyles.vue";
+export { ColorStyles };

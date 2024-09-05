@@ -1,6 +1,6 @@
-import type { IProductListModel } from './types'
-import { ProductApi, ProductModel } from '@/entities/Product'
-import { DummyJsonModel } from '@/shared/api'
+import type { IProductListModel } from "./types";
+import { ProductApi, ProductModel } from "@/entities/Product";
+import { DummyJsonModel } from "@/shared/api";
 
 export function useGeneralModel(): IProductListModel {
   const {
@@ -12,12 +12,15 @@ export function useGeneralModel(): IProductListModel {
     page,
     countPages,
     isLoading,
-    changeLimit
-  } = DummyJsonModel.useQueryListModel<ProductModel.IProduct, ProductModel.IProductGetResponse>({
+    changeLimit,
+  } = DummyJsonModel.useQueryListModel<
+    ProductModel.IProduct,
+    ProductModel.IProductGetResponse
+  >({
     apiHandler: ProductApi.getAll,
     mapper: ProductModel.getMapped,
-    initQuery: DummyJsonModel.QUERY_DEFAULT
-  })
+    initQuery: DummyJsonModel.QUERY_DEFAULT,
+  });
 
   return {
     products,
@@ -28,6 +31,6 @@ export function useGeneralModel(): IProductListModel {
     setPage,
     page,
     countPages,
-    changeLimit
-  }
+    changeLimit,
+  };
 }

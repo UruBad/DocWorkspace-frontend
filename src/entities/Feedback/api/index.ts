@@ -1,8 +1,6 @@
 import { createApiErrorUpdate, TelegramApi } from "@/shared/api";
 import type { IFeedback, IFeedbackResponse } from "@/entities/Feedback/model";
 
-const FeedbackUrl = "feedback";
-
 const name = "feedback";
 
 const errors = {
@@ -18,7 +16,7 @@ async function sendFeedback(data: IFeedback) {
     return await TelegramApi.sendMessage<IFeedbackResponse>(
       `Мое имя ${data.name}. Свяжитесь со мной ${data.email} или ${data.phone}`
     );
-  } catch (e) {
+  } catch {
     throw new Error(errors.sendFeedback);
   }
 }

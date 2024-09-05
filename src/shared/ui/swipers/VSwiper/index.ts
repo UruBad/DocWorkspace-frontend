@@ -1,2 +1,2 @@
-import VSwiper from './VSwiper.vue'
-export { VSwiper }
+import VSwiper from "./VSwiper.vue";
+export { VSwiper };

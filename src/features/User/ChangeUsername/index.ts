@@ -1,1 +1,1 @@
-export { default as ChangeUsername } from './ChangeUsername.vue'
+export { default as ChangeUsername } from "./ChangeUsername.vue";

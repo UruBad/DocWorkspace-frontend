@@ -1,13 +1,13 @@
-import { inject } from 'vue'
-import { EAppProviders } from '@/app/providers/types'
-import { throwInjectError } from '@/shared/lib/utils/errors'
+import { inject } from "vue";
+import { EAppProviders } from "@/app/providers/types";
+import { throwInjectError } from "@/shared/lib/utils/errors";
 
 export function useAppPages() {
-  const appPages = inject(EAppProviders.AppPages)
+  const appPages = inject(EAppProviders.AppPages);
 
   if (!appPages) {
-    throwInjectError('AppPages')
+    throwInjectError("AppPages");
   }
 
-  return appPages
+  return appPages;
 }

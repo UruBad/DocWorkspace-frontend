@@ -1,9 +1,9 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from "vue-router";
 
-export const routeName: string = 'FavoritesPage'
+export const routeName: string = "FavoritesPage";
 
 export const route: RouteRecordRaw = {
   name: routeName,
-  path: 'favorites',
-  component: () => import('@/pages/personal-area-favorites')
-}
+  path: "favorites",
+  component: () => import("@/pages/personal-area-favorites"),
+};

@@ -1,2 +1,2 @@
-export * from './VSwiper'
-export * from './ImagesSwiper'
+export * from "./VSwiper";
+export * from "./ImagesSwiper";

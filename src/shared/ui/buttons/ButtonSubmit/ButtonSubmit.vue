@@ -19,29 +19,29 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '../base'
-import { EBorderDecorateIcons } from '@/shared/ui/BorderDecorate'
-import { SpinnerLoader } from '@/shared/ui/loaders'
-import type { EAppColor } from '@/shared/lib/types/app'
+import { VButton } from "../base";
+import { EBorderDecorateIcons } from "@/shared/ui/BorderDecorate";
+import { SpinnerLoader } from "@/shared/ui/loaders";
+import type { EAppColor } from "@/shared/lib/types/app";
 
 interface IButtonSubmit {
-  txt?: string
-  borderLeftIcon?: EBorderDecorateIcons
-  borderRightIcon?: EBorderDecorateIcons
-  beforeBgColor?: EAppColor
-  afterBgColor?: EAppColor
-  isSubmitting: boolean
-  isDisabled?: boolean
+  txt?: string;
+  borderLeftIcon?: EBorderDecorateIcons;
+  borderRightIcon?: EBorderDecorateIcons;
+  beforeBgColor?: EAppColor;
+  afterBgColor?: EAppColor;
+  isSubmitting: boolean;
+  isDisabled?: boolean;
 }
 
 withDefaults(defineProps<IButtonSubmit>(), {
-  txt: 'Submit',
+  txt: "Submit",
   borderLeftIcon: EBorderDecorateIcons.top,
   borderRightIcon: EBorderDecorateIcons.inner,
-  isDisabled: false
-})
+  isDisabled: false,
+});
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

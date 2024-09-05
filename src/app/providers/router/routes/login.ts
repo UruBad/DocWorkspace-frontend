@@ -1,12 +1,12 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from "vue-router";
 
-export const routeName: string = 'LoginPage'
+export const routeName: string = "LoginPage";
 
 export const route: RouteRecordRaw = {
   name: routeName,
-  path: '/login',
-  component: () => import('@/pages/login'),
+  path: "/login",
+  component: () => import("@/pages/login"),
   meta: {
-    layout: 'empty'
+    layout: "empty",
   },
-}
+};

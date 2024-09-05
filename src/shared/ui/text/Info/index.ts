@@ -1,1 +1,1 @@
-export { default as VInfo } from './VInfo.vue'
+export { default as VInfo } from "./VInfo.vue";

@@ -9,11 +9,11 @@
 
 <script setup lang="ts">
 defineProps<{
-  heading: string
-  text?: string
-}>()
+  heading: string;
+  text?: string;
+}>();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

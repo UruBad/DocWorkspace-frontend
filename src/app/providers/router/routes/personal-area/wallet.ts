@@ -1,9 +1,9 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from "vue-router";
 
-export const routeName: string = 'WalletPage'
+export const routeName: string = "WalletPage";
 
 export const route: RouteRecordRaw = {
   name: routeName,
-  path: 'wallet',
-  component: () => import('@/pages/personal-area-wallet')
-}
+  path: "wallet",
+  component: () => import("@/pages/personal-area-wallet"),
+};

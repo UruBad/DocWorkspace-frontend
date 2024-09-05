@@ -1,2 +1,2 @@
-import PaginationStyles from './PaginationStyles.vue'
-export { PaginationStyles }
+import PaginationStyles from "./PaginationStyles.vue";
+export { PaginationStyles };

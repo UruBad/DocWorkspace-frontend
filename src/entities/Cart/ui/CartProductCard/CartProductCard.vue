@@ -7,10 +7,7 @@
     </div>
 
     <div class="cart-product-card__info">
-      <router-link
-        class="link"
-        :to="appRoutes.getProduct(cartProduct.id)"
-      >
+      <router-link class="link" :to="appRoutes.getProduct(cartProduct.id)">
         <h4>{{ cartProduct.title }}</h4>
       </router-link>
     </div>
@@ -34,19 +31,27 @@
 </template>
 
 <script setup lang="ts">
-import { VPrice } from '@/shared/ui/VPrice'
-import { CyberCard } from '@/shared/ui/cyber'
-import type { ICartProduct } from '../../model'
-import { IconDiscount } from '@/shared/ui/icons'
-import { useAppRoutes } from '@/app/providers'
+import { VPrice } from "@/shared/ui/VPrice";
+import { CyberCard } from "@/shared/ui/cyber";
+import type { ICartProduct } from "../../model";
+import { IconDiscount } from "@/shared/ui/icons";
+import { useAppRoutes } from "@/app/providers";
+import type { ComponentObjectPropsOptions } from "vue";
 
-defineProps<{
-  cartProduct: ICartProduct
-}>()
+interface Props {
+  cartProduct: ICartProduct;
+}
 
-const appRoutes = useAppRoutes()
+defineProps<ComponentObjectPropsOptions<Props>>({
+  cartProduct: {
+    type: Object,
+    required: true,
+  },
+});
+
+const appRoutes = useAppRoutes();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

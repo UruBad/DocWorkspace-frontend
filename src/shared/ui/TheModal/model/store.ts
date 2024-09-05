@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { reactive, type Ref } from "vue";
+import { reactive } from "vue";
 import type { IModal, IModalStore } from "./types";
 import { useIsBoolean } from "@/shared/lib/use/base/useIsBoolean";
 

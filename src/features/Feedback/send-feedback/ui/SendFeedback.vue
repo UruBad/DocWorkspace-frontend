@@ -35,8 +35,7 @@
 import { VeeInputEmail, VeeInputPhone, VForm } from "@/shared/ui/form";
 import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/yup";
-import { object, string } from "yup";
-import { useAlertsStore } from "@/shared/ui/TheAlerts";
+import { object } from "yup";
 import { validator } from "@/entities/Feedback/model";
 import { VeeInputName } from "@/entities/User";
 import { FeedbackApi } from "@/entities/Feedback";
@@ -58,8 +57,10 @@ const onSubmit = handleSubmit(async (values) => {
       "Запись на прием"
     );
     handleReset();
-  } catch (e: any) {
-    showModal(e.message, "Ошибка");
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      showModal(e.message, "Ошибка");
+    }
   }
 });
 </script>

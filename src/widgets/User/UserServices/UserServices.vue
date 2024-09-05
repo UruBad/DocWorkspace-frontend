@@ -30,7 +30,8 @@ import { UserService } from "@/entities/User";
 interface IProps {
   services: IService[];
 }
-const props = defineProps<IProps>();
+
+defineProps<IProps>();
 </script>
 
 <style lang="scss" scoped>

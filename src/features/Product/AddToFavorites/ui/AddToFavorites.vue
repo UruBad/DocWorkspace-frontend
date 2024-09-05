@@ -1,37 +1,34 @@
 <template>
-  <ButtonLike
-    :is-like="isLike"
-    @click="onClick"
-  />
+  <ButtonLike :is-like="isLike" @click="onClick" />
 </template>
 
 <script setup lang="ts">
-import { ButtonLike } from '@/shared/ui/buttons'
-import { FavoritesModel } from '@/entities/Favorites'
-import { useIsLike } from '@/shared/lib/use/useIsLike'
-import { useAddToFavorites } from '@/features/Product/AddToFavorites/model'
+import { ButtonLike } from "@/shared/ui/buttons";
+import { FavoritesModel } from "@/entities/Favorites";
+import { useIsLike } from "@/shared/lib/use/useIsLike";
+import { useAddToFavorites } from "@/features/Product/AddToFavorites/model";
 
 const props = defineProps<{
-  id: number
-}>()
+  id: number;
+}>();
 
-const { checkInFavoritesBy } = FavoritesModel.useFavoritesStore()
+const { checkInFavoritesBy } = FavoritesModel.useFavoritesStore();
 
-const { add, remove } = useAddToFavorites()
+const { add, remove } = useAddToFavorites();
 
-const { isLike, toggleIsLike } = useIsLike(checkInFavoritesBy(props.id))
+const { isLike, toggleIsLike } = useIsLike(checkInFavoritesBy(props.id));
 
 function onClick() {
   if (isLike.value) {
-    remove(props.id)
+    remove(props.id);
   } else {
-    add(props.id)
+    add(props.id);
   }
 
-  toggleIsLike()
+  toggleIsLike();
 }
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

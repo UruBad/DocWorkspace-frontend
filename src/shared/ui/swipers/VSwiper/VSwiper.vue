@@ -7,11 +7,11 @@
     :pagination="{
       el: '.v-swiper__pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     }"
     :navigation="{
       nextEl: '.v-swiper__button--next',
-      prevEl: '.v-swiper__button--prev'
+      prevEl: '.v-swiper__button--prev',
     }"
   >
     <slot />
@@ -35,12 +35,12 @@
 </template>
 
 <script lang="ts">
-import { register } from 'swiper/element'
-import { Pagination, Navigation } from 'swiper'
-import SwiperButton from './buttons/SwiperButton.vue'
-import { defineComponent } from 'vue'
+import { register } from "swiper/element";
+import { Pagination, Navigation } from "swiper";
+import SwiperButton from "./buttons/SwiperButton.vue";
+import { defineComponent } from "vue";
 
-register()
+register();
 
 export default defineComponent({
   components: { SwiperButton },
@@ -48,34 +48,34 @@ export default defineComponent({
     slidesPerView: {
       type: Number,
       required: false,
-      default: 1
+      default: 1,
     },
     spaceBetween: {
       type: Number,
       required: false,
-      default: 0
+      default: 0,
     },
     hasPagination: {
       type: Boolean,
       required: false,
-      default: true
+      default: true,
     },
     hasNavigation: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   setup() {
-    const modules = [Pagination, Navigation]
+    const modules = [Pagination, Navigation];
     return {
-      modules
-    }
-  }
-})
+      modules,
+    };
+  },
+});
 </script>
 
 <style lang="scss">
-@import 'swiper/swiper-bundle.min.css';
-@import 'styles';
+@import "swiper/swiper-bundle.min.css";
+@import "styles";
 </style>

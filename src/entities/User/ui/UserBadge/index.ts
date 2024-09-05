@@ -1,1 +1,1 @@
-export { default as UserBadge } from './UserBadge.vue'
+export { default as UserBadge } from "./UserBadge.vue";

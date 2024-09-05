@@ -32,7 +32,8 @@ import { UserProblem } from "@/entities/User";
 interface IProps {
   problems: IProblem[];
 }
-const props = defineProps<IProps>();
+
+defineProps<IProps>();
 </script>
 
 <style lang="scss" scoped>

@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="input-quantity row gap-xxs"
-    :class="classes"
-  >
+  <div class="input-quantity row gap-xxs" :class="classes">
     <button
       class="input-quantity__button pseudo-minus reset"
       type="button"
@@ -30,62 +27,66 @@
 </template>
 
 <script setup lang="ts">
-import { VInput } from '@/shared/ui/form'
-import { computed } from 'vue'
+import { VInput } from "@/shared/ui/form";
+import { computed } from "vue";
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"]);
 
 interface IInputQuantity {
-  modelValue: number
-  minValue?: number
-  maxValue?: number
-  label?: string
-  isDisabled?: boolean
+  modelValue: number;
+  minValue?: number;
+  maxValue?: number;
+  label?: string;
+  isDisabled?: boolean;
 }
 
 const props = withDefaults(defineProps<IInputQuantity>(), {
-  minValue: 0
-})
+  minValue: 0,
+});
 
 const classes = computed(() => ({
-  labeled: !!props.label
-}))
+  labeled: !!props.label,
+}));
 
-const isDisabledButtonMinus = computed(() => props.modelValue === props.minValue)
+const isDisabledButtonMinus = computed(
+  () => props.modelValue === props.minValue
+);
 
-const isDisabledButtonPlus = computed(() => props.modelValue === props.maxValue)
+const isDisabledButtonPlus = computed(
+  () => props.modelValue === props.maxValue
+);
 
 function onInput(value: string) {
   if (!value) {
-    return setMinValue()
+    return setMinValue();
   }
 
-  if (value.startsWith('0')) {
-    return setMinValue()
+  if (value.startsWith("0")) {
+    return setMinValue();
   }
 
-  const normalizeValue = +value
+  const normalizeValue = +value;
 
   if (props.maxValue && normalizeValue > props.maxValue) {
-    return emit('update:modelValue', props.maxValue)
+    return emit("update:modelValue", props.maxValue);
   }
 
-  emit('update:modelValue', normalizeValue)
+  emit("update:modelValue", normalizeValue);
 }
 
 function setMinValue() {
-  emit('update:modelValue', props.minValue)
+  emit("update:modelValue", props.minValue);
 }
 
 function onPlus() {
-  emit('update:modelValue', props.modelValue + 1)
+  emit("update:modelValue", props.modelValue + 1);
 }
 
 function onMinus() {
-  emit('update:modelValue', props.modelValue - 1)
+  emit("update:modelValue", props.modelValue - 1);
 }
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

@@ -1,1 +1,1 @@
-export { default as InputQuantity } from './InputQuantity.vue'
+export { default as InputQuantity } from "./InputQuantity.vue";

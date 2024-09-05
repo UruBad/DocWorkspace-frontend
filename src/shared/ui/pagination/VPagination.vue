@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="count > 0"
-    class="pagination column gap-xs"
-  >
+  <div v-if="count > 0" class="pagination column gap-xs">
     <div class="pagination__info">Page {{ modelValue }} of {{ count }}</div>
 
     <div class="pagination__pages row gap-xxs">
@@ -58,77 +55,87 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useAppStore } from '@/app/providers'
+import { computed } from "vue";
+import { useAppStore } from "@/app/providers";
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"]);
 
 interface IVPagination {
-  modelValue: number
-  count: number
-  isDisabled?: boolean
+  modelValue: number;
+  count: number;
+  isDisabled?: boolean;
 }
 
 const props = withDefaults(defineProps<IVPagination>(), {
-  isDisabled: false
-})
+  isDisabled: false,
+});
 
-const appStore = useAppStore()
+const appStore = useAppStore();
 
-const isMobile = computed(() => appStore.screenWidth <= 400)
+const isMobile = computed(() => appStore.screenWidth <= 400);
 
-const isFirstPage = computed(() => props.modelValue === 1)
-const isLastPage = computed(() => props.modelValue === props.count)
+const isFirstPage = computed(() => props.modelValue === 1);
+const isLastPage = computed(() => props.modelValue === props.count);
 
 const visibleDots = computed(() => {
   if (isMobile.value) {
-    return props.count > 6
+    return props.count > 6;
   }
-  return props.count > 7
-})
+  return props.count > 7;
+});
 
-const pageForVisibleDotsLeft = computed(() => (isMobile.value ? 3 : 4))
-const visibleDotsLeft = computed(() => visibleDots.value && props.modelValue > pageForVisibleDotsLeft.value)
+const pageForVisibleDotsLeft = computed(() => (isMobile.value ? 3 : 4));
+const visibleDotsLeft = computed(
+  () => visibleDots.value && props.modelValue > pageForVisibleDotsLeft.value
+);
 
-const pageForVisibleDotsRight = computed(() => (isMobile.value ? 2 : 3))
+const pageForVisibleDotsRight = computed(() => (isMobile.value ? 2 : 3));
 const visibleDotsRight = computed(
-  () => visibleDots.value && props.modelValue < props.count - pageForVisibleDotsRight.value
-)
+  () =>
+    visibleDots.value &&
+    props.modelValue < props.count - pageForVisibleDotsRight.value
+);
 
-const pageForStartPages = computed(() => (isMobile.value ? 4 : 5))
+const pageForStartPages = computed(() => (isMobile.value ? 4 : 5));
 
 const pages = computed(() => {
   if (props.modelValue < pageForStartPages.value) {
-    return getStartPages()
+    return getStartPages();
   }
 
   if (props.modelValue > props.count - 3) {
-    return getEndPages()
+    return getEndPages();
   }
 
-  return getMiddlePages()
-})
+  return getMiddlePages();
+});
 
 function updateModelValue(num: number) {
-  emit('update:modelValue', num)
+  emit("update:modelValue", num);
 }
 
 function getStartPages() {
-  return getStartPagesList().filter(between)
+  return getStartPagesList().filter(between);
 }
 function getStartPagesList() {
   if (isMobile.value) {
-    return [2, 3, 4]
+    return [2, 3, 4];
   }
-  return [2, 3, 4, 5, 6]
+  return [2, 3, 4, 5, 6];
 }
 
 function getMiddlePages() {
   if (isMobile.value) {
-    return [props.modelValue - 1, props.modelValue, props.modelValue + 1]
+    return [props.modelValue - 1, props.modelValue, props.modelValue + 1];
   }
 
-  return [props.modelValue - 2, props.modelValue - 1, props.modelValue, props.modelValue + 1, props.modelValue + 2]
+  return [
+    props.modelValue - 2,
+    props.modelValue - 1,
+    props.modelValue,
+    props.modelValue + 1,
+    props.modelValue + 2,
+  ];
 }
 
 function getEndPages() {
@@ -139,10 +146,10 @@ function getEndPages() {
       props.modelValue - 1,
       props.modelValue,
       props.modelValue + 1,
-      props.modelValue + 2
+      props.modelValue + 2,
     ]
       .filter(between)
-      .slice(-3)
+      .slice(-3);
   }
 
   return [
@@ -153,17 +160,17 @@ function getEndPages() {
     props.modelValue - 1,
     props.modelValue,
     props.modelValue + 1,
-    props.modelValue + 2
+    props.modelValue + 2,
   ]
     .filter(between)
-    .slice(-5)
+    .slice(-5);
 }
 
 function between(page: number) {
-  return page > 1 && page < props.count
+  return page > 1 && page < props.count;
 }
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

@@ -1,1 +1,1 @@
-export { default as IconUser } from './IconUser.vue'
+export { default as IconUser } from "./IconUser.vue";

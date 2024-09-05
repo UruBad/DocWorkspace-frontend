@@ -1,3 +1,3 @@
-export * from './useBaseQuery'
-export * from './usePaginationQuery'
-export * from './const'
+export * from "./useBaseQuery";
+export * from "./usePaginationQuery";
+export * from "./const";

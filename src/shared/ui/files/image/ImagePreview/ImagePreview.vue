@@ -11,13 +11,13 @@
 </template>
 
 <script setup lang="ts">
-import type { IImage } from '@/shared/lib/types/dom'
+import type { IImage } from "@/shared/lib/types/dom";
 
 defineProps<{
-  image: IImage
-}>()
+  image: IImage;
+}>();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

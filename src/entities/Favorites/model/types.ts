@@ -1,10 +1,10 @@
-import type { FirebaseApi } from '@/shared/api'
+import type { FirebaseApi } from "@/shared/api";
 
 export interface IFavorites extends IFavoritesFB {
-  id: FirebaseApi.TId
+  id: FirebaseApi.TId;
 }
 
 export interface IFavoritesFB {
-  userId: FirebaseApi.TId
-  productIds: number[]
+  userId: FirebaseApi.TId;
+  productIds: number[];
 }

@@ -1,2 +1,2 @@
-export * as DummyJsonApi from './api'
-export * as DummyJsonModel from './model'
+export * as DummyJsonApi from "./api";
+export * as DummyJsonModel from "./model";

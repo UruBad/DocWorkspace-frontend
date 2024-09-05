@@ -11,11 +11,7 @@
     />
 
     <div class="column gap-s max-w-field">
-      <VInput
-        label="LABEL"
-        name="input"
-        placeholder="placeholder"
-      />
+      <VInput label="LABEL" name="input" placeholder="placeholder" />
 
       <VInput
         v-for="(item, i) of inputList"
@@ -32,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { InputQuantity, VInput } from '@/shared/ui/form'
-import { ref } from 'vue'
+import { InputQuantity, VInput } from "@/shared/ui/form";
+import { ref } from "vue";
 
-const quantity = ref(1)
-const inputList = ['hover', 'focus', 'error', 'disabled']
+const quantity = ref(1);
+const inputList = ["hover", "focus", "error", "disabled"];
 </script>

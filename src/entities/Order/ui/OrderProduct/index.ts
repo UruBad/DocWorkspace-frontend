@@ -1,1 +1,1 @@
-export { default as OrderProduct } from './OrderProduct.vue'
+export { default as OrderProduct } from "./OrderProduct.vue";

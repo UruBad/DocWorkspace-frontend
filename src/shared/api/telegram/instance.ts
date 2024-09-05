@@ -1,12 +1,6 @@
 import axios from "axios";
 import type { InternalAxiosRequestConfig } from "axios";
 import {
-  FB_API_URL,
-  APP_NAME,
-  TOKEN_KEY,
-  FB_ACCOUNTS_API_URL,
-  FB_SECURE_TOKEN_API_URL,
-  FB_API_KEY,
   TELEGRAM_API_URL,
   TELEGRAM_ACCESS_TOKEN,
   TELEGRAM_CHAT_ID,
@@ -34,6 +28,6 @@ function addToken(config: InternalAxiosRequestConfig) {
   return config;
 }
 
-function reject(error: any) {
+function reject(error: unknown) {
   return Promise.reject(error);
 }

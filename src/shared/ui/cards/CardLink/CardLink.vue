@@ -1,22 +1,19 @@
 <template>
   <div class="card-link shadow-black border-radius">
     <slot />
-    <router-link
-      class="card-link__link abs-full"
-      :to="to"
-    />
+    <router-link class="card-link__link abs-full" :to="to" />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from "vue-router";
 
 interface IProps {
-  to: RouteLocationRaw
+  to: RouteLocationRaw;
 }
-defineProps<IProps>()
+defineProps<IProps>();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

@@ -1,2 +1,2 @@
-export { api as SessionApi } from './api'
-export * as SessionModel from './model'
+export { api as SessionApi } from "./api";
+export * as SessionModel from "./model";

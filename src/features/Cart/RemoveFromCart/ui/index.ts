@@ -1,1 +1,1 @@
-export { default as RemoveFromCart } from './RemoveFromCart.vue'
+export { default as RemoveFromCart } from "./RemoveFromCart.vue";

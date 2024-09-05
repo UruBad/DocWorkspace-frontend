@@ -1,1 +1,1 @@
-export { default as InfoShort } from './InfoShort.vue'
+export { default as InfoShort } from "./InfoShort.vue";

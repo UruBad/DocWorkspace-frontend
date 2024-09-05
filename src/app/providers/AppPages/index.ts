@@ -1,1 +1,1 @@
-export * from './useAppPages'
+export * from "./useAppPages";

@@ -1,1 +1,1 @@
-export { default as CartTotal } from './CartTotal.vue'
+export { default as CartTotal } from "./CartTotal.vue";

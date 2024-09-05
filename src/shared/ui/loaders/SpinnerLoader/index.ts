@@ -1,2 +1,2 @@
-import SpinnerLoader from './SpinnerLoader.vue'
-export default SpinnerLoader
+import SpinnerLoader from "./SpinnerLoader.vue";
+export default SpinnerLoader;

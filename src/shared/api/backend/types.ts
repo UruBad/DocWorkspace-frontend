@@ -1,9 +1,9 @@
-import type { IStringIdx } from '@/shared/lib/types/object';
+import type { IStringIdx } from "@/shared/lib/types/object";
 
 export type TId = string;
 
 export interface IBaseItem {}
 
-interface IPostResponseData {}
+export interface IPostResponseData extends IStringIdx {}
 
-interface IUpdateData extends IStringIdx {}
+export interface IUpdateData extends IStringIdx {}

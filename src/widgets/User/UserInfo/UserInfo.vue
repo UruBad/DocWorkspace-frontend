@@ -17,7 +17,7 @@ import { UserServices } from "@/widgets/User/UserServices";
 interface IProps {
   user: IUser;
 }
-const props = defineProps<IProps>();
+defineProps<IProps>();
 </script>
 
 <style lang="scss" scoped>

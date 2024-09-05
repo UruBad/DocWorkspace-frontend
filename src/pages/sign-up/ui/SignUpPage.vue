@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import { RegisterForm } from '@/features/auth'
+import { RegisterForm } from "@/features/auth";
 </script>
 
 <style lang="scss">
-@import './styles';
+@import "./styles";
 </style>

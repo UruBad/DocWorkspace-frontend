@@ -1,12 +1,6 @@
 <template>
-  <div
-    class="radio"
-    :class="classes"
-  >
-    <div
-      v-if="label"
-      class="radio__label label mb-xxs"
-    >
+  <div class="radio" :class="classes">
+    <div v-if="label" class="radio__label label mb-xxs">
       {{ label }}
     </div>
 
@@ -22,42 +16,38 @@
         @change="onChange"
       />
     </div>
-    <small
-      v-if="error"
-      class="radio__error red"
-      >{{ error }}</small
-    >
+    <small v-if="error" class="radio__error red">{{ error }}</small>
   </div>
 </template>
 
 <script setup lang="ts">
-import { RadioItem } from './RadioItem'
-import type { IRadioItem } from '@/shared/ui/form/base/Radio/types'
-import { computed } from 'vue'
+import { RadioItem } from "./RadioItem";
+import type { IRadioItem } from "@/shared/ui/form/base/Radio/types";
+import { computed } from "vue";
 
-const emit = defineEmits(['update:modelValue', 'change'])
+const emit = defineEmits(["update:modelValue", "change"]);
 
 interface IVRadio {
-  modelValue?: IRadioItem
-  options: IRadioItem[]
-  label?: string
-  name?: string
-  isDisabled?: boolean
-  error?: string
+  modelValue?: IRadioItem;
+  options: IRadioItem[];
+  label?: string;
+  name?: string;
+  isDisabled?: boolean;
+  error?: string;
 }
 
-const props = defineProps<IVRadio>()
+const props = defineProps<IVRadio>();
 
 const classes = computed(() => ({
-  'disabled  events-none': props.isDisabled,
-  error: props.error
-}))
+  "disabled  events-none": props.isDisabled,
+  error: props.error,
+}));
 
 function onChange(item: IRadioItem) {
-  emit('update:modelValue', item)
+  emit("update:modelValue", item);
 }
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

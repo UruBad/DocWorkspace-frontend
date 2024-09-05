@@ -1,2 +1,2 @@
-import BarsLoader from './BarsLoader.vue'
-export default BarsLoader
+import BarsLoader from "./BarsLoader.vue";
+export default BarsLoader;

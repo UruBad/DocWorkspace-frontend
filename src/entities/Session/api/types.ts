@@ -1,14 +1,13 @@
-interface IAuthData {
-  username: string
-  password: string
+export interface IAuthData {
+  username: string;
+  password: string;
 }
 
-interface IAuthResponse {
-  accessToken: string
-  refreshToken: string
+export interface IAuthResponse {
+  accessToken: string;
+  refreshToken: string;
 }
 
-interface ITokenResponse {
-  accessToken: string
+export interface ITokenResponse {
+  accessToken: string;
 }
-

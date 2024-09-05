@@ -1,2 +1,2 @@
-import LoginPage from './ui/Admin.vue'
-export default LoginPage
+import AdminPage from "./ui/AdminPage.vue";
+export default AdminPage;

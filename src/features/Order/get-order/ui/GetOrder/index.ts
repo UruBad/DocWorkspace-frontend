@@ -1,1 +1,1 @@
-export { default as GetOrder } from './GetOrder.vue'
+export { default as GetOrder } from "./GetOrder.vue";

@@ -1,21 +1,20 @@
 <template>
-  <ButtonRefillWallet @click="openModal" />
+  <div>
+    <ButtonRefillWallet @click="openModal" />
 
-  <RefillWalletModal
-    v-if="isModal"
-    @close="closeModal"
-  />
+    <RefillWalletModal v-if="isModal" @close="closeModal" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ButtonRefillWallet } from '../ButtonRefillWallet'
-import { RefillWalletModal } from '../RefillWalletModal'
+import { ButtonRefillWallet } from "../ButtonRefillWallet";
+import { RefillWalletModal } from "../RefillWalletModal";
 
-import { useSingleModal } from '@/shared/lib/use/modal/useSingleModal'
+import { useSingleModal } from "@/shared/lib/use/modal/useSingleModal";
 
-const { isModal, openModal, closeModal } = useSingleModal()
+const { isModal, openModal, closeModal } = useSingleModal();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

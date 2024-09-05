@@ -13,25 +13,31 @@
 </template>
 
 <script setup lang="ts">
-import { VInput } from '../../base'
-import { useField } from 'vee-validate'
-import { computed } from 'vue'
-import type { TInputType } from '../../base'
+import { VInput } from "../../base";
+import { useField } from "vee-validate";
+import { computed } from "vue";
+import type { TInputType } from "../../base";
 
 interface IVeeInput {
-  label?: string
-  name: string
-  isDisabled?: boolean
-  placeholder?: string
-  inputType?: TInputType
+  label?: string;
+  name: string;
+  isDisabled?: boolean;
+  placeholder?: string;
+  inputType?: TInputType;
 }
 
-const props = defineProps<IVeeInput>()
+const props = defineProps<IVeeInput>();
 
-const { value: inputValue, errorMessage, handleBlur, handleChange, meta } = useField<string | number>(() => props.name)
+const {
+  value: inputValue,
+  errorMessage,
+  handleBlur,
+  handleChange,
+  meta,
+} = useField<string | number>(() => props.name);
 
 const error = computed(() => {
-  if (meta.touched) return errorMessage.value
-  return ''
-})
+  if (meta.touched) return errorMessage.value;
+  return "";
+});
 </script>

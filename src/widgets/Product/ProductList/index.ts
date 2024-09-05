@@ -1,2 +1,2 @@
-export * from './ui'
-export * as ProductListModel from './model'
+export * from "./ui";
+export * as ProductListModel from "./model";

@@ -1,2 +1,2 @@
-import TheAlerts from './TheAlerts.vue'
-export default TheAlerts
+import TheAlerts from "./TheAlerts.vue";
+export default TheAlerts;

@@ -1,8 +1,10 @@
 <template>
-  <div class="patient-area-page container">
-    <span>Patient Area</span>
+  <div>
+    <div class="patient-area-page container">
+      <span>Patient Area</span>
+    </div>
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <script setup lang="ts"></script>

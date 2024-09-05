@@ -1,1 +1,1 @@
-export { default as ButtonSubmit } from './ButtonSubmit.vue'
+export { default as ButtonSubmit } from "./ButtonSubmit.vue";

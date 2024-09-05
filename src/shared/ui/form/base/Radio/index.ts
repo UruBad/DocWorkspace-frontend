@@ -1,2 +1,2 @@
-export { default as VRadio } from './VRadio.vue'
-export * from './types'
+export { default as VRadio } from "./VRadio.vue";
+export * from "./types";

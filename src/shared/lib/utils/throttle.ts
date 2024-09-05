@@ -1,30 +1,33 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export function throttle(func: Function, ms: number) {
-  let isThrottled = false
-  let savedArgs: any
-  let savedThis: any
+  let isThrottled = false;
+  let savedArgs: any;
+  let savedThis: any;
 
   function throttleWrapper(this: any) {
     if (isThrottled) {
       // eslint-disable-next-line prefer-rest-params
-      savedArgs = arguments
-      savedThis = this
-      return
+      savedArgs = arguments;
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      savedThis = this;
+      return;
     }
 
     // eslint-disable-next-line prefer-rest-params
-    func.apply(this, arguments)
+    func.apply(this, arguments);
 
-    isThrottled = true
+    isThrottled = true;
 
     setTimeout(() => {
-      isThrottled = false
+      isThrottled = false;
 
       if (savedArgs) {
-        throttleWrapper.apply(savedThis, savedArgs)
-        savedArgs = savedThis = null
+        throttleWrapper.apply(savedThis, savedArgs);
+        savedArgs = savedThis = null;
       }
-    }, ms)
+    }, ms);
   }
 
-  return throttleWrapper
+  return throttleWrapper;
 }

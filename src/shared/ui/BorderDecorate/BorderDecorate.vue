@@ -15,32 +15,37 @@
 </template>
 
 <script setup lang="ts">
-import { IconBorderBottom, IconBorderInner, IconBorderOuter, IconBorderTop } from '@/shared/ui/icons/borders'
-import type { Component } from 'vue'
-import { computed } from 'vue'
-import type { EIconsName } from './types'
+import {
+  IconBorderBottom,
+  IconBorderInner,
+  IconBorderOuter,
+  IconBorderTop,
+} from "@/shared/ui/icons/borders";
+import type { Component } from "vue";
+import { computed } from "vue";
+import type { EIconsName } from "./types";
 
 defineProps<{
-  iconLeft: EIconsName
-  iconRight: EIconsName
-}>()
+  iconLeft: EIconsName;
+  iconRight: EIconsName;
+}>();
 
 const getComponentBy = computed(() => (name: string): Component | null => {
   switch (name) {
-    case 'inner':
-      return IconBorderInner
-    case 'outer':
-      return IconBorderOuter
-    case 'top':
-      return IconBorderTop
-    case 'bottom':
-      return IconBorderBottom
+    case "inner":
+      return IconBorderInner;
+    case "outer":
+      return IconBorderOuter;
+    case "top":
+      return IconBorderTop;
+    case "bottom":
+      return IconBorderBottom;
     default:
-      return null
+      return null;
   }
-})
+});
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

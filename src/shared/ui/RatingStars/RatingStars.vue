@@ -12,24 +12,24 @@
 </template>
 
 <script setup lang="ts">
-import { IconStar } from '@/shared/ui/icons'
-import { starSystem } from './model'
-import { EAppPixelSize } from '@/shared/lib/types/app'
-import { computed } from 'vue'
+import { IconStar } from "@/shared/ui/icons";
+import { starSystem } from "./model";
+import { EAppPixelSize } from "@/shared/lib/types/app";
+import { computed } from "vue";
 
 const props = withDefaults(
   defineProps<{
-    rating: number
-    size?: EAppPixelSize
+    rating: number;
+    size?: EAppPixelSize;
   }>(),
   {
-    size: EAppPixelSize.sm
+    size: EAppPixelSize.sm,
   }
-)
+);
 
-const formatRating = computed(() => Math.round(props.rating))
+const formatRating = computed(() => Math.round(props.rating));
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

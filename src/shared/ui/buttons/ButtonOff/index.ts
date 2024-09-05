@@ -1,1 +1,1 @@
-export { default as ButtonOff } from './ButtonOff.vue'
+export { default as ButtonOff } from "./ButtonOff.vue";

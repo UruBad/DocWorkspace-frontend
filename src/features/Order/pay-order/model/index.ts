@@ -1,28 +1,28 @@
-import type { FirebaseApi } from '@/shared/api'
+import type { FirebaseApi } from "@/shared/api";
 
-import { OrderApi, OrderModel } from '@/entities/Order'
-import { WalletModel } from '@/entities/Wallet'
+import { OrderApi, OrderModel } from "@/entities/Order";
+import { WalletModel } from "@/entities/Wallet";
 
 export function usePayOrder() {
-  const orderStore = OrderModel.useOrderStore()
-  const { writeOff } = WalletModel.useWriteOff()
+  const orderStore = OrderModel.useOrderStore();
+  const { writeOff } = WalletModel.useWriteOff();
 
   interface IPayload {
-    id: FirebaseApi.TId
-    sum: number
+    id: FirebaseApi.TId;
+    sum: number;
   }
 
   async function payOrder({ id, sum }: IPayload) {
-    await writeOff(sum)
+    await writeOff(sum);
 
-    const { data } = await OrderApi.patchIsPrepaid(id)
+    const { data } = await OrderApi.patchIsPrepaid(id);
 
-    const order = orderStore.orders[id]
+    const order = orderStore.orders[id];
 
-    order.isPrepaid = data.isPrepaid
+    order.isPrepaid = data.isPrepaid;
   }
 
   return {
-    payOrder
-  }
+    payOrder,
+  };
 }

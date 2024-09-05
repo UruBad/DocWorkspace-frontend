@@ -1,1 +1,1 @@
-export { default as AddToFavorites } from './AddToFavorites.vue'
+export { default as AddToFavorites } from "./AddToFavorites.vue";

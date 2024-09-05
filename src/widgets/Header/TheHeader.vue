@@ -28,12 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { useAppRoutes } from "@/app/providers";
-import { SessionModel } from "@/entities/Session";
-
-const appRoutes = useAppRoutes();
-const session = SessionModel.useSessionStore();
-
 const click = (anchor: string) => {
   document.getElementById(anchor)?.scrollIntoView({
     behavior: "smooth",

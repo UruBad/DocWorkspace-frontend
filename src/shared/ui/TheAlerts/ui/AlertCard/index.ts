@@ -1,2 +1,2 @@
-import AlertCard from './AlertCard.vue'
-export default AlertCard
+import AlertCard from "./AlertCard.vue";
+export default AlertCard;

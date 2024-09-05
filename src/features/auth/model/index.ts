@@ -1,3 +1,3 @@
-export * from './useAuth'
-export * from './useLogout'
-export * from './useSignUp'
+export * from "./useAuth";
+export * from "./useLogout";
+export * from "./useSignUp";

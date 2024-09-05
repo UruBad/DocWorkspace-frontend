@@ -17,13 +17,13 @@
 </template>
 
 <script setup lang="ts">
-import CountUp from 'vue-countup-v3'
-import { useWalletStore } from '../../model'
-import { COUNT_UP_DURATION, PRICE_COUNT_UP_OPTIONS } from '@/shared/ui/VPrice'
+import CountUp from "vue-countup-v3";
+import { useWalletStore } from "../../model";
+import { COUNT_UP_DURATION, PRICE_COUNT_UP_OPTIONS } from "@/shared/ui/VPrice";
 
-const store = useWalletStore()
+const store = useWalletStore();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

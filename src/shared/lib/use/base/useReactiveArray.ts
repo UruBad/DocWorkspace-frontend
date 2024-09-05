@@ -1,42 +1,44 @@
-import { reactive } from 'vue'
-import { refreshArray, spliceBy, spliceSimpleBy } from '@/shared/lib/utils/array'
-
-type TValue = number | string
+import { reactive } from "vue";
+import {
+  refreshArray,
+  spliceBy,
+  spliceSimpleBy,
+  type IObject,
+  type TValue,
+} from "@/shared/lib/utils/array";
 
 interface IUseReactiveArray<T> {
-  array: T[]
-  add: (item: T) => void
-  remove: (value: TValue, key?: string) => void
-  refresh: (data: T[]) => void
+  array: T[];
+  add: (item: T) => void;
+  remove: (value: TValue, key?: string) => void;
+  refresh: (data: T[]) => void;
 }
 
 // TODO доделать типизацию
 export function useReactiveArray<T>(init: T[] = []): IUseReactiveArray<T> {
-  const array = reactive(init) as T[]
+  const array = reactive(init) as T[];
 
   function add(item: T) {
-    array.push(item)
+    array.push(item);
   }
 
-  function remove(value: TValue, key: string = 'id') {
-    if (key === 'id') {
-      // @ts-ignore
-      return spliceBy(value, array)
+  function remove(value: TValue, key: string = "id") {
+    if (key === "id") {
+      return spliceBy(value, array as IObject[]);
     }
     if (!key) {
-      // @ts-ignore
-      return spliceSimpleBy(value, array)
+      return spliceSimpleBy(value, array as TValue[]);
     }
   }
 
   function refresh(data: T[]) {
-    refreshArray(array, data)
+    refreshArray(array, data);
   }
 
   return {
     array,
     add,
     remove,
-    refresh
-  }
+    refresh,
+  };
 }

@@ -45,6 +45,6 @@ function addAPIKey(config: InternalAxiosRequestConfig) {
   return config;
 }
 
-function reject(error: any) {
+function reject(error: unknown) {
   return Promise.reject(error);
 }

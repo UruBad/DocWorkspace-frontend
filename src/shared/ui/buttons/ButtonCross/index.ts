@@ -1,1 +1,1 @@
-export { default as ButtonCross } from './ButtonCross.vue'
+export { default as ButtonCross } from "./ButtonCross.vue";

@@ -1,2 +1,2 @@
-import SignUpPage from './ui/SignUpPage.vue'
-export default SignUpPage
+import SignUpPage from "./ui/SignUpPage.vue";
+export default SignUpPage;

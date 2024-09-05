@@ -1,1 +1,1 @@
-export { default as ButtonSm } from './ButtonSm.vue'
+export { default as ButtonSm } from "./ButtonSm.vue";

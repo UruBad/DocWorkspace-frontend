@@ -1,1 +1,1 @@
-export { default as WalletChangelog } from './WalletChangelog.vue'
+export { default as WalletChangelog } from "./WalletChangelog.vue";

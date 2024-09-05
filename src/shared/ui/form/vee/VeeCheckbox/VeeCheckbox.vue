@@ -10,22 +10,27 @@
 </template>
 
 <script setup lang="ts">
-import { VCheckbox } from '../../base'
-import { useField } from 'vee-validate'
-import { computed } from 'vue'
+import { VCheckbox } from "../../base";
+import { useField } from "vee-validate";
+import { computed } from "vue";
 
 interface IVeeCheckbox {
-  label: string
-  name: string
-  isDisabled?: boolean
+  label: string;
+  name: string;
+  isDisabled?: boolean;
 }
 
-const props = defineProps<IVeeCheckbox>()
+const props = defineProps<IVeeCheckbox>();
 
-const { value: inputValue, errorMessage, handleChange, meta } = useField<boolean>(() => props.name)
+const {
+  value: inputValue,
+  errorMessage,
+  handleChange,
+  meta,
+} = useField<boolean>(() => props.name);
 
 const error = computed(() => {
-  if (meta.touched) return errorMessage.value
-  return ''
-})
+  if (meta.touched) return errorMessage.value;
+  return "";
+});
 </script>

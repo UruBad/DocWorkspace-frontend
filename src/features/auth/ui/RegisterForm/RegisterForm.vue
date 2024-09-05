@@ -90,8 +90,10 @@ const onSubmit = handleSubmit(async (values) => {
     await createEntities(data.localId);
 
     goToPersonalArea();
-  } catch (e: any) {
-    showError(e.message);
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      showError(e.message);
+    }
   }
 });
 

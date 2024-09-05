@@ -9,11 +9,11 @@
 
 <script setup lang="ts">
 defineProps<{
-  label: string
-  text?: string | number
-}>()
+  label: string;
+  text?: string | number;
+}>();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

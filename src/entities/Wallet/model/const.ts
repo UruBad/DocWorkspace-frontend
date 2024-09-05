@@ -1,18 +1,18 @@
 export const WALLET_OPERATION_TYPES = [
   {
     id: 1,
-    name: 'Refill'
+    name: "Refill",
   },
   {
     id: 2,
-    name: 'Payment'
+    name: "Payment",
   },
   {
     id: 3,
-    name: 'Refund'
+    name: "Refund",
   },
   {
     id: 4,
-    name: 'Withdrawal'
-  }
-] as const
+    name: "Withdrawal",
+  },
+] as const;

@@ -1,21 +1,24 @@
 interface IUseInterval {
-  startInterval: () => void
-  finishInterval: () => void
+  startInterval: () => void;
+  finishInterval: () => void;
 }
 
-export default function useInterval(handler: Function, timeout: number): IUseInterval {
-  let intervalId: number
+export default function useInterval(
+  handler: () => void,
+  timeout: number
+): IUseInterval {
+  let intervalId: number;
 
   function startInterval() {
-    intervalId = setInterval(handler, timeout)
+    intervalId = setInterval(handler, timeout);
   }
 
   function finishInterval() {
-    clearInterval(intervalId)
+    clearInterval(intervalId);
   }
 
   return {
     startInterval,
-    finishInterval
-  }
+    finishInterval,
+  };
 }

@@ -1,1 +1,1 @@
-export { default as VeeRadio } from './VeeRadio.vue'
+export { default as VeeRadio } from "./VeeRadio.vue";

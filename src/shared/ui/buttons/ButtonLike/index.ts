@@ -1,1 +1,1 @@
-export { default as ButtonLike } from './ButtonLike.vue'
+export { default as ButtonLike } from "./ButtonLike.vue";

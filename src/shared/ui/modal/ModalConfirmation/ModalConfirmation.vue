@@ -1,9 +1,5 @@
 <template>
-  <BaseModal
-    class-name="modal-confirmation"
-    :title="title"
-    @close="close"
-  >
+  <BaseModal class-name="modal-confirmation" :title="title" @close="close">
     <slot />
 
     <div class="center gap-xxs">
@@ -26,50 +22,52 @@
 </template>
 
 <script setup lang="ts">
-import { BaseModal } from '../base'
-import { ButtonSubmit, VButton } from '@/shared/ui/buttons'
-import { useAlertsStore } from '@/shared/ui/TheAlerts'
-import { useIsLoading } from '@/shared/lib/use/useIsLoading'
-import { EBorderDecorateIcons } from '@/shared/ui/BorderDecorate'
+import { BaseModal } from "../base";
+import { ButtonSubmit, VButton } from "@/shared/ui/buttons";
+import { useAlertsStore } from "@/shared/ui/TheAlerts";
+import { useIsLoading } from "@/shared/lib/use/useIsLoading";
+import { EBorderDecorateIcons } from "@/shared/ui/BorderDecorate";
 
-const emit = defineEmits(['close', 'confirm', 'reject'])
+const emit = defineEmits(["close", "confirm", "reject"]);
 
 interface IProps {
-  title?: string
-  handler: () => Promise<void>
+  title?: string;
+  handler: () => Promise<void>;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  title: 'Are you sure?'
-})
+  title: "Are you sure?",
+});
 
-const { showError } = useAlertsStore()
-const { isLoading, startLoading, finishLoading } = useIsLoading()
+const { showError } = useAlertsStore();
+const { isLoading, startLoading, finishLoading } = useIsLoading();
 
 async function onConfirm() {
   try {
-    startLoading()
+    startLoading();
 
-    await props.handler()
+    await props.handler();
 
-    close()
-    emit('confirm')
-  } catch (e: any) {
-    showError(e.message)
+    close();
+    emit("confirm");
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      showError(e.message);
+    }
   } finally {
-    finishLoading()
+    finishLoading();
   }
 }
 
 function onReject() {
-  close()
-  emit('reject')
+  close();
+  emit("reject");
 }
 
 function close() {
-  emit('close')
+  emit("close");
 }
 </script>
 <style lang="scss">
-@import 'style';
+@import "style";
 </style>

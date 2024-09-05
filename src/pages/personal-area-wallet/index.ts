@@ -1,2 +1,2 @@
-import WalletPage from './ui/WalletPage.vue'
-export default WalletPage
+import WalletPage from "./ui/WalletPage.vue";
+export default WalletPage;

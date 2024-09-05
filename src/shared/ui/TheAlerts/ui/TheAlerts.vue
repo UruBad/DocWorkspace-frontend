@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import AlertCard from './AlertCard'
-import { useAlertsStore } from '../model'
+import AlertCard from "./AlertCard";
+import { useAlertsStore } from "../model";
 
-const store = useAlertsStore()
+const store = useAlertsStore();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>

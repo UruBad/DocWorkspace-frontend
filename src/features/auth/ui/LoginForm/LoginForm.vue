@@ -18,56 +18,58 @@
 </template>
 
 <script setup lang="ts">
-import { VeeInput, VeeInputPassword, VForm } from '@/shared/ui/form';
-import { useForm } from 'vee-validate'
-import { toTypedSchema } from '@vee-validate/yup'
-import { object, string } from 'yup'
-import { SessionApi, SessionModel } from '@/entities/Session'
-import { useAlertsStore } from '@/shared/ui/TheAlerts'
-import { useAuth } from '../../model'
-import { useRouter } from 'vue-router'
-import { useAppRoutes } from '@/app/providers'
-import { computed } from 'vue';
-import { BASE_URL } from '@/shared/config';
-import { ImagePreview } from '@/shared/ui/files';
+import { VeeInput, VeeInputPassword, VForm } from "@/shared/ui/form";
+import { useForm } from "vee-validate";
+import { toTypedSchema } from "@vee-validate/yup";
+import { object, string } from "yup";
+import { SessionApi, SessionModel } from "@/entities/Session";
+import { useAlertsStore } from "@/shared/ui/TheAlerts";
+import { useAuth } from "../../model";
+import { useRouter } from "vue-router";
+import { useAppRoutes } from "@/app/providers";
+import { computed } from "vue";
+import { BASE_URL } from "@/shared/config";
+import { ImagePreview } from "@/shared/ui/files";
 
-const router = useRouter()
-const appRoutes = useAppRoutes()
+const router = useRouter();
+const appRoutes = useAppRoutes();
 
-const { showError } = useAlertsStore()
-const session = SessionModel.useSessionStore()
-const auth = useAuth()
+const { showError } = useAlertsStore();
+const session = SessionModel.useSessionStore();
+const auth = useAuth();
 
 const validationSchema = toTypedSchema(
   object({
-    username: string().required('введите логин'),
-    password: string().required('введите пароль')
+    username: string().required("введите логин"),
+    password: string().required("введите пароль"),
   })
-)
+);
 
-const { handleSubmit, isSubmitting } = useForm({ validationSchema })
+const { handleSubmit, isSubmitting } = useForm({ validationSchema });
 
 const imageSettings = computed(() => {
   return {
     src: `${BASE_URL}/image/dw.png`,
-    alt: 'DocWorkSpace'
+    alt: "DocWorkSpace",
   };
 });
 
-const onSubmit = handleSubmit(async values => {
+const onSubmit = handleSubmit(async (values) => {
   try {
-    const { data } = await SessionApi.singIn(values)
+    const { data } = await SessionApi.singIn(values);
 
-    session.setTokens(data)
+    session.setTokens(data);
 
-    await auth.loadSessionUser(data.localId)
-    await auth.loadStoresData()
+    await auth.loadSessionUser(data.localId);
+    await auth.loadStoresData();
 
-    goToPersonalArea()
-  } catch (e: any) {
-    showError(e.message)
+    goToPersonalArea();
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      showError(e.message);
+    }
   }
-})
+});
 
 function goToPersonalArea() {
   router.push(appRoutes.getAdmin());

@@ -1,29 +1,29 @@
-import { CartApi, CartModel } from '@/entities/Cart'
-import { findBy } from '@/shared/lib/utils/array'
+import { CartApi, CartModel } from "@/entities/Cart";
+import { findBy } from "@/shared/lib/utils/array";
 
 export function useChangeProductQuantity() {
-  const store = CartModel.useCartStore()
-  const { updateCart } = CartModel.useCartUpdate()
+  const store = CartModel.useCartStore();
+  const { updateCart } = CartModel.useCartUpdate();
 
   async function updateProductQuantity(id: number, quantity: number) {
-    const product = store.findInCart(id)
-    if (!product) return
+    const product = store.findInCart(id);
+    if (!product) return;
 
-    product.quantity = quantity
+    product.quantity = quantity;
 
-    const { data } = await CartApi.calculate(store.cartProducts)
-    store.setCart(data)
+    const { data } = await CartApi.calculate(store.cartProducts);
+    store.setCart(data);
 
-    const productUpdated = findBy(id, data.products)
-    if (!productUpdated) return
+    const productUpdated = findBy(id, data.products);
+    if (!productUpdated) return;
 
-    product.total = productUpdated.total
-    product.discountedPrice = productUpdated.discountedPrice
+    product.total = productUpdated.total;
+    product.discountedPrice = productUpdated.discountedPrice;
 
-    await updateCart()
+    await updateCart();
   }
 
   return {
-    updateProductQuantity
-  }
+    updateProductQuantity,
+  };
 }

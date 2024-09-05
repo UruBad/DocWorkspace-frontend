@@ -1,3 +1,3 @@
-export * from './VeeCheckbox'
-export * from './VeeInput'
-export * from './VeeRadio'
+export * from "./VeeCheckbox";
+export * from "./VeeInput";
+export * from "./VeeRadio";

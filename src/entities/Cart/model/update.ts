@@ -1,12 +1,12 @@
-import { useCartStore } from './stores'
-import { api } from '../api'
+import { useCartStore } from "./stores";
+import { api } from "../api";
 
 export function useCartUpdate() {
-  const store = useCartStore()
+  const store = useCartStore();
 
   async function updateCart() {
     if (!store.cartId) {
-      return store.updateLS()
+      return store.updateLS();
     }
 
     await api.update(store.cartId, {
@@ -14,11 +14,11 @@ export function useCartUpdate() {
       totalQuantity: store.totalQuantity,
       totalProducts: store.totalProducts,
       discountedTotal: store.discountedTotal,
-      products: store.cartProducts
-    })
+      products: store.cartProducts,
+    });
   }
 
   return {
-    updateCart
-  }
+    updateCart,
+  };
 }

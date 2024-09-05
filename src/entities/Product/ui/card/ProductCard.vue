@@ -17,17 +17,11 @@
     </div>
 
     <div class="column gap-xxs">
-      <VPrice
-        :price="product.price"
-        :discount="product.discountPercentage"
-      />
+      <VPrice :price="product.price" :discount="product.discountPercentage" />
 
       <h4>{{ product.title }} - {{ product.stock }}</h4>
 
-      <RatingStars
-        :rating="product.rating"
-        :size="EAppPixelSize.xs"
-      />
+      <RatingStars :rating="product.rating" :size="EAppPixelSize.xs" />
     </div>
 
     <div class="product-card__actions product-card__actions--bottom">
@@ -37,20 +31,20 @@
 </template>
 
 <script setup lang="ts">
-import { ImagesSwiper } from '@/shared/ui/swipers'
-import { VPrice } from '@/shared/ui/VPrice'
-import RatingStars from '@/shared/ui/RatingStars'
-import type { IProduct } from '../../model'
-import { EAppPixelSize } from '@/shared/lib/types/app'
-import { useAppRoutes } from '@/app/providers'
+import { ImagesSwiper } from "@/shared/ui/swipers";
+import { VPrice } from "@/shared/ui/VPrice";
+import RatingStars from "@/shared/ui/RatingStars";
+import type { IProduct } from "../../model";
+import { EAppPixelSize } from "@/shared/lib/types/app";
+import { useAppRoutes } from "@/app/providers";
 
 defineProps<{
-  product: IProduct
-}>()
+  product: IProduct;
+}>();
 
-const appRoutes = useAppRoutes()
+const appRoutes = useAppRoutes();
 </script>
 
 <style lang="scss">
-@import 'styles';
+@import "styles";
 </style>
