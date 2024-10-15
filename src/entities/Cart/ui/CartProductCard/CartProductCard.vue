@@ -36,18 +36,12 @@ import { CyberCard } from "@/shared/ui/cyber";
 import type { ICartProduct } from "../../model";
 import { IconDiscount } from "@/shared/ui/icons";
 import { useAppRoutes } from "@/app/providers";
-import type { ComponentObjectPropsOptions } from "vue";
 
-interface Props {
+interface IProps {
   cartProduct: ICartProduct;
 }
 
-defineProps<ComponentObjectPropsOptions<Props>>({
-  cartProduct: {
-    type: Object,
-    required: true,
-  },
-});
+defineProps<IProps>();
 
 const appRoutes = useAppRoutes();
 </script>

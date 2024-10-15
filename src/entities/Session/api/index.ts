@@ -10,9 +10,11 @@ export const api = {
   getToken,
 };
 
-async function singIn(data: IAuthData): AxiosPromise<IAuthResponse> {
+async function singIn(
+  data: IAuthData
+): Promise<AxiosPromise<IAuthResponse> | undefined> {
   try {
-    return await BackendApi.post(`${AUTH_URL}/login`, data);
+    return await BackendApi.post<IAuthResponse>(`${AUTH_URL}/login`, data);
   } catch (e: unknown) {
     if (e instanceof AxiosError) {
       throw new Error(getErrorMessageBy(e.response?.data.error.message));
@@ -20,7 +22,7 @@ async function singIn(data: IAuthData): AxiosPromise<IAuthResponse> {
   }
 }
 
-async function singOut(): AxiosPromise<IAuthResponse> {
+async function singOut() {
   try {
     return await BackendApi.post(`${AUTH_URL}/logoff`, {});
   } catch (e: unknown) {
@@ -30,12 +32,9 @@ async function singOut(): AxiosPromise<IAuthResponse> {
   }
 }
 
-async function getToken(refreshToken: string): AxiosPromise<ITokenResponse> {
+async function getToken(): Promise<AxiosPromise<ITokenResponse> | undefined> {
   try {
-    return await BackendApi.post(`${AUTH_URL}/refresh`, {
-      grant_type: "refresh_token",
-      refresh_token: refreshToken,
-    });
+    return await BackendApi.refresh<ITokenResponse>(`${AUTH_URL}/refresh`);
   } catch (e: unknown) {
     if (e instanceof AxiosError) {
       throw new Error(getErrorMessageBy(e.response?.data.error.message));

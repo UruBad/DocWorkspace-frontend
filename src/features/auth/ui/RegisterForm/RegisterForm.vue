@@ -31,24 +31,15 @@ import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/yup";
 import { object, string, ref as refYup } from "yup";
 import { useAppRoutes } from "@/app/providers";
-import {
-  UserModel,
-  UserApi,
-  VeeRadioGender,
-  VeeInputUsername,
-} from "@/entities/User";
+import { VeeRadioGender, VeeInputUsername } from "@/entities/User";
 import { SessionApi, SessionModel } from "@/entities/Session";
-import type { IRadioItem } from "@/shared/ui/form";
-import type { FirebaseApi } from "@/shared/api";
 import { useAlertsStore } from "@/shared/ui/TheAlerts";
 import { emailRegexp } from "@/shared/lib/regexp";
-import { useSignUp } from "../../model";
 
 const router = useRouter();
 const appRoutes = useAppRoutes();
 const session = SessionModel.useSessionStore();
 
-const { createEntities } = useSignUp();
 const { showError } = useAlertsStore();
 
 const validationSchema = toTypedSchema(
@@ -70,26 +61,30 @@ const { handleSubmit, isSubmitting } = useForm({ validationSchema });
 const onSubmit = handleSubmit(async (values) => {
   try {
     const signUpData = {
-      email: values.email,
+      username: values.username,
       password: values.password,
     };
 
-    const { data } = await SessionApi.singUp(signUpData);
-    session.setTokens(data);
+    const result = await SessionApi.singIn(signUpData);
+    if (result) {
+      const { data } = result;
+      session.setTokens(data);
 
-    const userData: UserModel.IUserFB = {
-      aptitudes: [],
-      problems: [],
-      services: [],
-      username: values.username,
-      email: values.email,
-      gender: (values.gender as IRadioItem).value as UserModel.EGender,
-    };
+      /* const userData: UserModel = {
+        aptitudes: [],
+        problems: [],
+        services: [],
+        username: values.username,
+        email: values.email,
+        gender: (values.gender as IRadioItem).value as UserModel.EGender,
+      };
 
-    await createAndSetUser(data.localId, userData);
-    await createEntities(data.localId);
+      // await createAndSetUser(data.localId, userData);
+      // await createEntities(data.localId);
+      */
 
-    goToPersonalArea();
+      goToPersonalArea();
+    }
   } catch (e: unknown) {
     if (e instanceof Error) {
       showError(e.message);
@@ -97,11 +92,11 @@ const onSubmit = handleSubmit(async (values) => {
   }
 });
 
-async function createAndSetUser(id: FirebaseApi.TId, data: UserModel.IUserFB) {
+/* async function createAndSetUser(id: FirebaseApi.TId, data: UserModel.IUserFB) {
   const response = await UserApi.createById(id, data);
 
   session.setUser({ ...response.data, id });
-}
+} */
 
 function goToPersonalArea() {
   router.push(appRoutes.getPersonalArea());

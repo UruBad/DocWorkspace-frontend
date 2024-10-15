@@ -4,6 +4,7 @@
   --color__black--transparent: rgba(1, 1, 1, 0.5);
   --color__black--shadow: rgba(0, 0, 0, 0.3);
   --color__black--dark: #292929;
+  --color__light-black: 	#4A4A4A;
 
   --color__green: #42b983;
   --color__green--dark: #17412e;
@@ -18,9 +19,12 @@
   --color__red: #ff003c;
   --color__red--transparent: rgba(255, 0, 60, 0.35);
   --color__red--dark: #590015;
+  --color__light--red: #fc4b6c;
 
   --color__grey: #bbbbbb;
   --color__light-gray: #eef5f9;
+  --color__grey--background: #f2f6f8;
+  --color__grey--border: rgba(120,130,140,0.13);
   --color__grey--transparent: rgba(187, 187, 187, 0.1);
 
   --color__blue: #00f0ff;
@@ -29,6 +33,8 @@
 
   --color__light-blue: #5199ff;
   --color__light-yellow: #fcf8f2;
+
+  --color__turquoise: #26c6da;
 
   --color__dark-blue: #001417;
   --color__dark-blue--light: #002a30;

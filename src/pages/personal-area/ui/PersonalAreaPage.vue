@@ -14,9 +14,9 @@
       >
         <UserBadge :user="session.user" />
 
-        <VInfo label="Email" :txt="session.user.email" />
+        <VInfo label="Email" :txt="session.user.username" />
 
-        <VInfo label="Gender" :txt="session.user.gender" />
+        <VInfo label="Gender" :txt="session.user.role" />
 
         <LogoutButton class="personal-area-page__logout" />
       </CardLink>

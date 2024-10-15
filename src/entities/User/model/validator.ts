@@ -1,6 +1,7 @@
-import { object, string } from "yup";
+import { string } from "yup";
 
 export const validator = {
   username: () => string().required().min(3).max(50),
-  gender: () => object().required(),
+  lastname: () => string().required().min(3).max(50),
+  firstname: () => string().required().min(3).max(50),
 } as const;

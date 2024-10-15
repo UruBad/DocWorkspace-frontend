@@ -1,29 +1,27 @@
-import type { FirebaseApi } from "@/shared/api";
-
-export enum EGender {
-  male = "male",
-  female = "female",
+export enum ERole {
+  ADMIN = "admin",
+  DOCTOR = "doctor",
+  PATIENT = "patient",
 }
 
-export interface IUserFB {
+export enum EGender {
+  MALE = "male",
+  FEMALE = "female",
+}
+
+export interface IUser {
+  id: number;
+  lastname: string;
+  firstname: string;
   username: string;
-  gender: EGender;
-  email: string;
-  phone?: string;
-  avatar?: string;
-  walletId?: FirebaseApi.TId;
-  favoritesId?: FirebaseApi.TId;
-  cartId?: FirebaseApi.TId;
-  orderIds?: FirebaseApi.TId[];
-  commentIds?: FirebaseApi.TId[];
-  ratingIds?: FirebaseApi.TId[];
+  role: ERole;
   aptitudes: IAptitude[];
   problems: IProblem[];
   services: IService[];
-}
-
-export interface IUser extends IUserFB {
-  id: FirebaseApi.TId;
+  avatar: string;
+  gender: EGender;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IAptitude {

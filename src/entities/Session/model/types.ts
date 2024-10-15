@@ -6,6 +6,6 @@ export interface ITokens {
 }
 
 export interface ISessionUser extends UserModel.IUser {
-  createdAt?: number;
-  updatedAt?: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

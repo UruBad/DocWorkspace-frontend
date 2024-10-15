@@ -3,12 +3,12 @@
     <div class="app-bg" />
     <EmptyLayout v-if="isEmptyLayout" />
 
-    <AdminLayout v-if="isAdminLayout">
+    <AdminLayout v-else-if="isAdminLayout">
       <template #header>
         <TheAdminHeader />
       </template>
       <template #navigation>
-        <TheSidebar :nav-list="personalAreaNavList" />
+        <UserSidebar />
       </template>
     </AdminLayout>
 
@@ -40,8 +40,8 @@ import {
   ELayouts,
 } from "@/shared/ui/layouts";
 import { TheAlerts, useAlertsStore } from "@/shared/ui/TheAlerts";
-import { computed, markRaw, onBeforeMount, provide, reactive } from "vue";
-import { useRoute } from "vue-router";
+import { computed, onBeforeMount, provide } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { EAppProviders, AppRoutes, useAppStore } from "./providers";
 import { AppPages } from "./providers/router";
 import { AuthModel } from "@/features/auth";
@@ -50,9 +50,7 @@ import { TheFooter } from "@/widgets/TheFooter";
 import { ButtonSocial } from "@/shared/ui/buttons";
 import { TheModal } from "@/shared/ui/TheModal";
 import { TheHeader, TheAdminHeader } from "@/widgets/Header";
-import { TheSidebar } from "@/shared/ui/TheSidebar";
-import type { INavItem } from "@/shared/ui/navigation";
-import { IconDoctor, IconPatient } from "@/shared/ui/icons";
+import { UserSidebar } from "@/widgets/User/UserSidebar";
 
 provide(EAppProviders.AppRoutes, AppRoutes);
 provide(EAppProviders.AppPages, AppPages);
@@ -60,44 +58,33 @@ provide(EAppProviders.AppPages, AppPages);
 useAppStore();
 
 const route = useRoute();
+const router = useRouter();
 const isEmptyLayout = computed(() => route.meta.layout === ELayouts.empty);
 const isAdminLayout = computed(() => route.meta.layout === ELayouts.admin);
-
-const personalAreaNavList = reactive<INavItem[]>([
-  {
-    to: AppRoutes.getAdmin(),
-    label: "Врачи",
-    icon: markRaw(IconDoctor),
-  },
-  {
-    to: AppRoutes.getAdmin(),
-    label: "Пациенты",
-    icon: markRaw(IconPatient),
-  },
-]);
 
 const session = SessionModel.useSessionStore();
 const auth = AuthModel.useAuth();
 
 const { showError } = useAlertsStore();
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
   if (!session.refreshToken) return;
-  login();
+  await login();
 });
 
 async function login() {
   try {
-    const { data } = await SessionApi.getToken(session.refreshToken);
+    const result = await SessionApi.getToken();
+    if (result) {
+      const { data } = result;
 
-    session.setTokens({
-      accessToken: data.accessToken,
-      refreshToken: data.accessToken,
-    });
+      session.setTokens(data);
 
-    await auth.loadSessionUser(session.user.id);
-    await auth.loadStoresData();
+      await auth.loadSessionUser();
+    }
   } catch (e: unknown) {
+    session.logout();
+    router.push(AppRoutes.getMain());
     if (e instanceof Error) {
       showError(e.message);
     }

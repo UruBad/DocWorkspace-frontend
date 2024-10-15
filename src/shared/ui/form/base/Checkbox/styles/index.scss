@@ -5,7 +5,11 @@
   cursor: pointer;
 
   &__label {
-    color: var(--color__blue);
+    color: var(--color__black);
+
+    &.label {
+      font-weight: 400;
+    }
   }
 
   &__icon-wrap {
@@ -16,15 +20,15 @@
   }
 
   &__icon-bg {
-    color: var(--color__blue);
+    color: var(--color__grey);
 
     path {
-      fill: var(--color__dark-blue);
+      fill: var(--color__grey);
     }
   }
 
   &__icon-checked {
-    color: var(--color__white);
+    color: var(--color__black);
     opacity: 0;
     visibility: hidden;
     transition-timing-function: var(--transition-timing-function);
@@ -81,7 +85,7 @@
       color: var(--color__grey);
       opacity: 0.7;
       path {
-        fill: var(--color__dark-blue);
+        fill: var(color__grey);
       }
     }
 

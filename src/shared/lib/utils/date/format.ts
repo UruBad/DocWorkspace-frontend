@@ -1,6 +1,6 @@
-const formatterDate = new Intl.DateTimeFormat("en-GB");
+const formatterDate = new Intl.DateTimeFormat("ru-RU");
 
-const formatterDateTime = new Intl.DateTimeFormat("en-GB", {
+const formatterDateTime = new Intl.DateTimeFormat("ru-RU", {
   day: "numeric",
   month: "numeric",
   year: "numeric",

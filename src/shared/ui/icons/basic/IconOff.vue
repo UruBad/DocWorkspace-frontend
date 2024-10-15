@@ -1,10 +1,11 @@
 <template>
   <svg
-    fill="#000000"
     width="64px"
     height="64px"
     viewBox="0 0 96 96"
     xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    stroke="none"
   >
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g

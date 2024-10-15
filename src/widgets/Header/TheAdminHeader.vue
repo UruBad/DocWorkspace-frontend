@@ -10,7 +10,7 @@
         <ul class="navbar-nav__list">
           <li class="navbar-nav__list-item">
             <span class="navbar-nav__list-item__user">{{
-              session.user.email
+              session.user.username
             }}</span>
           </li>
         </ul>

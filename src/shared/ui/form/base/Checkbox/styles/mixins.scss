@@ -1,14 +1,14 @@
 @mixin checkboxHover () {
   .checkbox__icon-bg {
     path {
-      fill: var(--color__dark-blue--light)
+      fill: var(--color__grey)
     }
   }
 }
 
 @mixin checkboxFocus {
   .checkbox__icon-bg {
-    color: var(--color__white);
+    color: var(--color__grey);
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :type="type">
+  <button :class="['button', color]" :type="type">
     <span class="button__text" :style="styles">{{ txt }}</span>
     <slot />
   </button>
@@ -13,11 +13,13 @@ interface IProps {
   txt: string;
   size?: EAppPixelSize;
   type?: "reset" | "button" | "submit";
+  color?: "red" | "blue";
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   size: EAppPixelSize.xs,
   type: "button",
+  color: "blue",
 });
 
 const styles = computed(() => ({
@@ -55,5 +57,9 @@ const styles = computed(() => ({
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+
+  &.red {
+    background-color: var(--color__light--red);
+  }
 }
 </style>

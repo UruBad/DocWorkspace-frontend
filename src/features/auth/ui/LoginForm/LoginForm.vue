@@ -9,7 +9,7 @@
       :handler-submit="onSubmit"
     >
       <div class="column gap-m w-100">
-        <VeeInput name="username" placeholder="Логин" />
+        <VeeInputUsername />
 
         <VeeInputPassword />
       </div>
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { VeeInput, VeeInputPassword, VForm } from "@/shared/ui/form";
+import { VeeInputPassword, VForm } from "@/shared/ui/form";
 import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/yup";
 import { object, string } from "yup";
@@ -30,6 +30,7 @@ import { useAppRoutes } from "@/app/providers";
 import { computed } from "vue";
 import { BASE_URL } from "@/shared/config";
 import { ImagePreview } from "@/shared/ui/files";
+import { VeeInputUsername } from "@/entities/User";
 
 const router = useRouter();
 const appRoutes = useAppRoutes();
@@ -56,14 +57,17 @@ const imageSettings = computed(() => {
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    const { data } = await SessionApi.singIn(values);
+    const result = await SessionApi.singIn(values);
 
-    session.setTokens(data);
+    if (result) {
+      const { data } = result;
 
-    await auth.loadSessionUser(data.localId);
-    await auth.loadStoresData();
+      session.setTokens(data);
 
-    goToPersonalArea();
+      await auth.loadSessionUser();
+
+      goToPersonalArea();
+    }
   } catch (e: unknown) {
     if (e instanceof Error) {
       showError(e.message);
@@ -72,7 +76,7 @@ const onSubmit = handleSubmit(async (values) => {
 });
 
 function goToPersonalArea() {
-  router.push(appRoutes.getAdmin());
+  router.push(appRoutes.getWorkspaceArea());
 }
 </script>
 <style lang="scss" scoped>

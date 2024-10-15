@@ -10,7 +10,7 @@ import { api } from "../api";
 import { useAlertsStore } from "@/shared/ui/TheAlerts";
 import useTimeout from "@/shared/lib/use/useTimeout";
 import type { ISessionUser, ITokens } from "./types";
-import { EGender } from "@/entities/User/model/types";
+import { EGender, ERole } from "@/entities/User/model/types";
 
 const namespaced = "session";
 
@@ -28,7 +28,7 @@ export const useSessionStore = defineStore(namespaced, () => {
 
   function setToken(value: string) {
     token.value = value;
-    setLSToken(value);
+    setLSToken(value, false);
   }
 
   function removeToken() {
@@ -42,7 +42,7 @@ export const useSessionStore = defineStore(namespaced, () => {
 
   function setRefreshToken(value: string) {
     refreshToken.value = value;
-    setLSRefreshToken(value);
+    setLSRefreshToken(value, false);
   }
 
   function removeRefreshToken() {
@@ -56,10 +56,13 @@ export const useSessionStore = defineStore(namespaced, () => {
 
   async function getToken() {
     try {
-      const { data } = await api.getToken(refreshToken.value);
-      setToken(data.accessToken);
-      setRefreshToken(data.accessToken);
-      setTimeoutGetToken();
+      const result = await api.getToken();
+      if (result) {
+        const { data } = result;
+        setToken(data.accessToken);
+        setRefreshToken(data.refreshToken);
+        setTimeoutGetToken();
+      }
     } catch (e: unknown) {
       if (e instanceof Error) showError(e.message);
     }
@@ -76,23 +79,29 @@ export const useSessionStore = defineStore(namespaced, () => {
     aptitudes: [],
     problems: [],
     services: [],
-    id: "",
+    id: 0,
     username: defaultUserName,
-    email: "",
-    gender: EGender.male,
+    role: ERole.PATIENT,
+    gender: EGender.MALE,
+    avatar: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    lastname: "",
+    firstname: "",
   });
 
-  const isAuth = computed(() => Boolean(user.id));
+  const isAuth = computed(() => Boolean(token.value));
 
   function setUser(data: ISessionUser) {
     user.id = data.id;
-    user.username = data.username;
-    user.email = data.email;
-    user.cartId = data.cartId;
-    user.favoritesId = data.favoritesId;
-    user.walletId = data.walletId;
-    user.orderIds = data.orderIds;
+    user.avatar = data.avatar;
+    user.createdAt = data.createdAt;
+    user.firstname = data.firstname;
     user.gender = data.gender;
+    user.lastname = data.lastname;
+    user.role = data.role;
+    user.updatedAt = data.updatedAt;
+    user.username = data.username;
   }
 
   function logout() {
@@ -104,10 +113,15 @@ export const useSessionStore = defineStore(namespaced, () => {
       aptitudes: [],
       problems: [],
       services: [],
-      id: "",
+      id: 0,
       username: defaultUserName,
-      gender: EGender.male,
-      email: "",
+      gender: EGender.MALE,
+      avatar: "",
+      role: ERole.PATIENT,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      lastname: "",
+      firstname: "",
     });
   }
 

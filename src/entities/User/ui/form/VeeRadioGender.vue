@@ -1,5 +1,5 @@
 <template>
-  <VeeRadio label="Gender" name="gender" :options="USER_GENDER_OPTIONS" />
+  <VeeRadio label="Пол" name="gender" :options="USER_GENDER_OPTIONS" />
 </template>
 
 <script setup lang="ts">

@@ -2,7 +2,7 @@ import { APP_NAME } from "@/shared/config";
 
 interface IUseLocalStorage<T> {
   value: T;
-  setLSValue: (value: T) => void;
+  setLSValue: (value: T, isJson?: boolean) => void;
 }
 
 export function useLocalStorage<T>(
@@ -11,11 +11,27 @@ export function useLocalStorage<T>(
 ): IUseLocalStorage<T> {
   const keyLS = `${APP_NAME}:${key}`;
 
-  const valueLS = window.localStorage.getItem(keyLS);
-  const value: T = valueLS ? JSON.parse(valueLS) : initialValue;
+  function isJsonString(value: string) {
+    try {
+      JSON.parse(value);
+    } catch {
+      return false;
+    }
+    return true;
+  }
 
-  function setLSValue(value: T): void {
-    window.localStorage.setItem(keyLS, JSON.stringify(value));
+  const valueLS = window.localStorage.getItem(keyLS);
+  const value: T = valueLS
+    ? isJsonString(valueLS)
+      ? JSON.parse(valueLS)
+      : valueLS
+    : initialValue;
+
+  function setLSValue(value: T, isJson: boolean = true): void {
+    window.localStorage.setItem(
+      keyLS,
+      isJson ? JSON.stringify(value) : `${value}`
+    );
   }
 
   return { value, setLSValue };
