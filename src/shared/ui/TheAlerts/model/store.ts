@@ -24,12 +24,15 @@ export const useAlertsStore = defineStore(NAMESPACE, (): IAlertsStore => {
   function showError(message: string, timeout?: number): void {
     createAndSetDestroy(EAlertStatus.error, message, timeout);
   }
+
   function showSuccess(message: string, timeout?: number): void {
     createAndSetDestroy(EAlertStatus.success, message, timeout);
   }
+
   function showWarning(message: string, timeout?: number): void {
     createAndSetDestroy(EAlertStatus.warning, message, timeout);
   }
+
   function showInfo(message: string, timeout?: number): void {
     createAndSetDestroy(EAlertStatus.info, message, timeout);
   }

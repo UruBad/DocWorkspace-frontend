@@ -1,3 +1,5 @@
-export { default as VeeRadioGender } from "./VeeRadioGender.vue";
 export { default as VeeInputUsername } from "./VeeInputUsername.vue";
-export { default as VeeInputName } from "./VeeInputName.vue";
+export { default as VeeInputFirstname } from "./VeeInputFirstname.vue";
+export { default as VeeInputLastname } from "./VeeInputLastname.vue";
+export { default as VeeCheckboxDeleted } from "./VeeCheckboxDeleted.vue";
+export { default as VeePassword } from "./VeePassword.vue";

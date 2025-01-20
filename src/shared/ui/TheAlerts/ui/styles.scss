@@ -1,9 +1,8 @@
 .alerts {
   position: fixed;
-  top: 70px;
+  bottom: 20px;
   right: 5%;
   z-index: var(--z-idx__alerts);
-  width: 100%;
   max-width: 560px;
 }
 
@@ -13,6 +12,7 @@
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
 }
+
 .alerts-enter-from,
 .alerts-leave-to {
   opacity: 0;

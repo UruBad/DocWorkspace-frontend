@@ -4,3 +4,4 @@ export * from "./UserAbout";
 export * from "./UserAptitude";
 export * from "./UserProblem";
 export * from "./UserService";
+export * from "./UserTable";

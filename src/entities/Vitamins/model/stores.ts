@@ -1,21 +1,26 @@
 import { defineStore } from "pinia";
 import { api } from "../api";
 import type { IVitamin } from "./types";
+import { useReactiveArray } from "@/shared/lib/use/base/useReactiveArray";
 
 interface IVitaminsStore {
-  getAll: () => Promise<IVitamin[]>;
+  getAll: () => void;
   create: (vitamin: IVitamin) => Promise<IVitamin>;
   update: (id: number, vitamin: IVitamin) => Promise<IVitamin>;
   destroy: (id: number) => Promise<void>;
+  revert: (id: number) => Promise<void>;
+  vitamins: IVitamin[];
 }
 
 const NAMESPACE = "vitamins";
 
 export const useVitaminsStore = defineStore(NAMESPACE, (): IVitaminsStore => {
+  const { array: vitamins, refresh } = useReactiveArray<IVitamin>([]);
+
   async function getAll() {
     const { data } = await api.getAll();
 
-    return data;
+    refresh(data);
   }
 
   async function create(vitamin: IVitamin) {
@@ -36,10 +41,18 @@ export const useVitaminsStore = defineStore(NAMESPACE, (): IVitaminsStore => {
     return data;
   }
 
+  async function revert(id: number) {
+    const { data } = await api.revert(id);
+
+    return data;
+  }
+
   return {
     getAll,
     create,
     update,
     destroy,
+    revert,
+    vitamins,
   };
 });

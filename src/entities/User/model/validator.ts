@@ -1,7 +1,20 @@
-import { string } from "yup";
+import { boolean, string } from "yup";
 
 export const validator = {
-  username: () => string().required().min(3).max(50),
-  lastname: () => string().required().min(3).max(50),
-  firstname: () => string().required().min(3).max(50),
+  firstname: string()
+    .required("Введите имя")
+    .min(3, "Поле должно содержать не менее 3 символов")
+    .max(50, "Поле должно содержать не более 50 символов"),
+  lastname: string()
+    .required("Введите фамилию")
+    .min(3, "Поле должно содержать не менее 3 символов")
+    .max(50, "Поле должно содержать не более 50 символов"),
+  username: string()
+    .required("Введите логин")
+    .min(3, "Поле должно содержать не менее 3 символов")
+    .max(50, "Поле должно содержать не более 50 символов"),
+  password: string()
+    .min(3, "Поле должно содержать не менее 3 символов")
+    .max(50, "Поле должно содержать не более 50 символов"),
+  deleted: boolean(),
 } as const;

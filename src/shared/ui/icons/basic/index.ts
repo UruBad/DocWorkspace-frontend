@@ -6,3 +6,5 @@ export { default as IconTrash } from "./IconTrash.vue";
 export { default as IconVector } from "./IconVector.vue";
 export { default as IconClose } from "./IconClose.vue";
 export { default as IconOff } from "./IconOff.vue";
+export { default as IconCheck } from "./IconCheck.vue";
+export { default as IconRevert } from "./IconRevert.vue";

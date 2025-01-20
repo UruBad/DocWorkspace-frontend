@@ -22,6 +22,11 @@ export interface IUser {
   gender: EGender;
   createdAt: Date;
   updatedAt: Date;
+  deleted: boolean;
+}
+
+export interface ICreateUser extends IUser {
+  password: string;
 }
 
 export interface IAptitude {

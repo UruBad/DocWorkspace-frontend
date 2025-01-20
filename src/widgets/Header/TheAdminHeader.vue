@@ -31,8 +31,8 @@ const session = SessionModel.useSessionStore();
 .admin-header {
   position: relative;
   z-index: 50;
-  -webkit-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
   height: 70px;
   background-color: var(--color__light-blue);
 
@@ -57,8 +57,8 @@ const session = SessionModel.useSessionStore();
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        margin: 0px;
-        padding: 0px 15px 0 0;
+        margin: 0;
+        padding: 0 15px 0 0;
         color: var(--color__white);
         margin-left: 1.5rem !important;
         font-size: 26px;
@@ -66,15 +66,15 @@ const session = SessionModel.useSessionStore();
     }
 
     &-nav {
-      padding: 0px 10px 0 0;
+      padding: 0 10px 0 0;
       display: flex;
       align-items: center;
       width: 100%;
 
       &__list {
         flex-direction: row;
-        margin-right: auto !important;
-        padding-left: 0;
+        margin-left: auto;
+        padding: 0 15px;
         margin-bottom: 0;
         list-style: none;
         display: flex;
@@ -84,7 +84,7 @@ const session = SessionModel.useSessionStore();
             font-size: 1.1875rem;
             color: white;
             font-weight: 300;
-            padding: 0px 15px;
+            padding: 0 15px;
             line-height: 70px;
             height: 70px;
             display: inline-block;

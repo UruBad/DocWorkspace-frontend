@@ -1,16 +1,28 @@
 <template>
   <div class="vitamins-table">
-    <VTable :headers="headers" :load-data-function="getAll">
+    <VTable :headers="headers" :load-data-function="getAll" :rows="vitamins">
       <template #deleted="{ row }">
-        {{ (row as VitaminsModel.IVitamin).deleted }}
+        <IconCheck class="deleted_checked" v-if="isDeleted(row)" />
       </template>
       <template #actions="{ row }">
         <div class="actions">
           <ButtonEdit
+            title="Редактировать"
             :icon-size="EAppPixelSize.ls"
             @click="handleEditClick(row)"
           />
-          <ButtonRemove :icon-size="EAppPixelSize.ls" />
+          <ButtonRevert
+            v-if="isDeleted(row)"
+            title="Разархивировать"
+            :icon-size="EAppPixelSize.ls"
+            @click="handleRevertClick(row)"
+          />
+          <ButtonRemove
+            v-else
+            title="Архивировать"
+            :icon-size="EAppPixelSize.ls"
+            @click="handleRemoveClick(row)"
+          />
         </div>
       </template>
     </VTable>
@@ -19,13 +31,16 @@
 
 <script lang="ts" setup>
 import { VitaminsModel } from "@/entities/Vitamins";
-import { ButtonRemove, ButtonEdit } from "@/shared/ui/buttons";
-import { VTable, type ITableHeader } from "@/shared/ui/VTable";
+import { ButtonEdit, ButtonRemove, ButtonRevert } from "@/shared/ui/buttons";
+import { type ITableHeader, VTable } from "@/shared/ui/VTable";
 import { EAppPixelSize } from "@/shared/lib/types/app";
-import { useVitaminFormPopup } from "../../model";
+import { useVitaminFormPopup, useVitaminsTable } from "../../model";
+import { useAlertsStore } from "@/shared/ui/TheAlerts";
+import { IconCheck } from "@/shared/ui/icons";
 
-const { getAll } = VitaminsModel.useVitaminsStore();
+const { getAll, destroy, vitamins, revert } = useVitaminsTable();
 const { show } = useVitaminFormPopup();
+const { showError, showSuccess } = useAlertsStore();
 
 const headers: ITableHeader[] = [
   {
@@ -60,9 +75,37 @@ const headers: ITableHeader[] = [
   },
 ];
 
-function handleEditClick(item: VitaminsModel.IVitamin) {
+const isDeleted = (row: VitaminsModel.IVitamin) => row.deleted;
+
+const handleEditClick = (item: VitaminsModel.IVitamin) => {
   show(item);
-}
+};
+
+const handleRemoveClick = async (item: VitaminsModel.IVitamin) => {
+  try {
+    await destroy(item.id);
+
+    showSuccess("Витамин удален");
+    getAll();
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      showError(e.message);
+    }
+  }
+};
+
+const handleRevertClick = async (item: VitaminsModel.IVitamin) => {
+  try {
+    await revert(item.id);
+
+    showSuccess("Витамин восстановлен");
+    getAll();
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      showError(e.message);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -70,5 +113,9 @@ function handleEditClick(item: VitaminsModel.IVitamin) {
   display: flex;
   flex-direction: row;
   gap: 8px;
+}
+
+.deleted_checked {
+  color: var(--color__light-blue);
 }
 </style>

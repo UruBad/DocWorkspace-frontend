@@ -1,7 +1,7 @@
 import { string } from "yup";
 
 export const validator = {
-  name: string()
+  firstname: string()
     .required("Поле обяательно для заполнения")
     .min(3, "Поле должно содержать не менее 3 символов")
     .max(50, "Поле должно содержать не более 50 символов"),

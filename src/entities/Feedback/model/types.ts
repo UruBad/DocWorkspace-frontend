@@ -1,6 +1,6 @@
 export interface IFeedback {
   email: string;
-  name: string;
+  firstname: string;
   phone: string;
 }
 

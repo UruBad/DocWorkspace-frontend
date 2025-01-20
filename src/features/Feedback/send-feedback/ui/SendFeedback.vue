@@ -19,7 +19,7 @@
 
             <VeeInputPhone />
 
-            <VeeInputName />
+            <VeeInputFirstname />
           </VForm>
           <div class="send-feedback__wrapper-block__main-text">
             Нажимая на кнопку, вы даете согласие на обработку персональных
@@ -37,9 +37,9 @@ import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/yup";
 import { object } from "yup";
 import { validator } from "@/entities/Feedback/model";
-import { VeeInputName } from "@/entities/User";
 import { FeedbackApi } from "@/entities/Feedback";
 import { useModalStore } from "@/shared/ui/TheModal";
+import { VeeInputFirstname } from "@/entities/User";
 
 const { showModal } = useModalStore();
 
@@ -117,6 +117,7 @@ const onSubmit = handleSubmit(async (values) => {
           line-height: 1.23;
           font-weight: 600;
         }
+
         &-description {
           color: var(--color__white);
           margin-bottom: 50px;
@@ -124,6 +125,7 @@ const onSubmit = handleSubmit(async (values) => {
           line-height: 1.55;
           font-weight: 300;
         }
+
         &-form {
           max-width: 560px;
           margin: 0 auto;
@@ -131,6 +133,7 @@ const onSubmit = handleSubmit(async (values) => {
           transition: max-height 0.3s cubic-bezier(0.19, 1, 0.22, 1);
           max-height: 15000px;
         }
+
         &-text {
           color: #fff;
           margin-top: 30px;

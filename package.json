@@ -1,7 +1,7 @@
 {
   "name": "doctorguppysha",
-  "version": "0.5.0",
-  "author": "Kosogorov Anton kosogorov.anton@gmail.com",
+  "version": "1.0.0",
+  "author": "Badtiev Uruzmag badtiev@list.ru",
   "private": true,
   "scripts": {
     "dev": "vite",

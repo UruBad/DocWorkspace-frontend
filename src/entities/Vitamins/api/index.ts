@@ -1,10 +1,11 @@
 import {
-  createApiErrorGetById,
-  createApiErrorGetAll,
-  createApiErrorCreate,
-  createApiErrorUpdate,
-  createApiErrorDelete,
   BackendApi,
+  createApiErrorCreate,
+  createApiErrorDelete,
+  createApiErrorGetAll,
+  createApiErrorGetById,
+  createApiErrorPatch,
+  createApiErrorUpdate,
 } from "@/shared/api";
 import type { IVitamin } from "../model/types";
 
@@ -18,6 +19,7 @@ const errors = {
   create: createApiErrorCreate(vitamins_name),
   update: createApiErrorUpdate(vitamins_name),
   destroy: createApiErrorDelete(vitamins_name),
+  revert: createApiErrorPatch(vitamins_name),
 } as const;
 
 export const api = {
@@ -26,6 +28,7 @@ export const api = {
   create,
   update,
   destroy,
+  revert,
 } as const;
 
 async function getAll() {
@@ -63,6 +66,14 @@ async function update(id: number, data: IVitamin) {
 async function destroy(id: number) {
   try {
     return await BackendApi.remove(VITAMINS_URL, id);
+  } catch {
+    throw new Error(errors.destroy);
+  }
+}
+
+async function revert(id: number) {
+  try {
+    return await BackendApi.patch(VITAMINS_URL, id, { deleted: false });
   } catch {
     throw new Error(errors.destroy);
   }

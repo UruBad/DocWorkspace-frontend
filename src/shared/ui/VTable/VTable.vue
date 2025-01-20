@@ -13,8 +13,18 @@
         </tr>
       </thead>
       <tbody>
+        <tr v-if="loading" class="table-data--empty">
+          <td :colspan="headers.length">
+            <BarsLoader />
+          </td>
+        </tr>
+        <tr v-else-if="isEmpty" class="table-data--loading">
+          <td :colspan="headers.length">
+            <span>Нет данных</span>
+          </td>
+        </tr>
         <tr
-          v-for="(item, index) in tableItems"
+          v-for="(item, index) in rows"
           :key="`table-row-${index}`"
           :class="{ 'data-table__row_loading': loading }"
         >
@@ -24,37 +34,33 @@
             </slot>
           </td>
         </tr>
-        <tr v-if="loading" class="table-data--loading">
-          <td :colspan="headers.length">
-            <BarsLoader />
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import type { ITableHeader } from "./types";
 import { BarsLoader } from "../loaders";
 
 interface IProps {
   headers: ITableHeader[];
+  rows: [];
   loadDataFunction: () => Promise<object[]>;
 }
 
 const props = defineProps<IProps>();
 
-const tableItems = ref([]);
 const loading = ref(true);
+
+const isEmpty = computed(() => props.rows.length === 0);
 
 async function loadData() {
   loading.value = true;
 
-  const data = await props.loadDataFunction();
+  await props.loadDataFunction();
 
-  tableItems.value = data as [];
   loading.value = false;
 }
 
@@ -67,7 +73,7 @@ onMounted(loadData);
   margin-bottom: 30px;
   border: 1px solid #d7dfe3;
   border-radius: 4px;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   color: #455a64;
   display: flex;
   flex-direction: column;

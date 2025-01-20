@@ -7,14 +7,13 @@ const NAMESPACE = "vitamin-form-popup";
 
 export const useVitaminFormPopup = defineStore(NAMESPACE, () => {
   const vitamin = reactive(VitaminsModel.DEFAULT_VITAMIN);
+  const { getAll } = VitaminsModel.useVitaminsStore();
 
-  const {
-    isBoolean: visible,
-    setTrue: open,
-    setFalse: close,
-  } = useIsBoolean(false);
+  const { isBoolean: visible, setTrue: open, setFalse } = useIsBoolean(false);
 
-  function show(item: VitaminsModel.IVitamin = VitaminsModel.DEFAULT_VITAMIN) {
+  const show = (
+    item: VitaminsModel.IVitamin = VitaminsModel.DEFAULT_VITAMIN
+  ) => {
     vitamin.id = item.id;
     vitamin.name = item.name;
     vitamin.description = item.description;
@@ -23,7 +22,12 @@ export const useVitaminFormPopup = defineStore(NAMESPACE, () => {
     vitamin.deleted = item.deleted;
 
     open();
-  }
+  };
+
+  const close = () => {
+    setFalse();
+    getAll();
+  };
 
   return { vitamin, visible, close, show };
 });

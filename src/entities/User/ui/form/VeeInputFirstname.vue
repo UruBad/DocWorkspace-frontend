@@ -1,5 +1,5 @@
 <template>
-  <VeeInput name="name" placeholder="Имя" />
+  <VeeInput name="firstname" placeholder="Имя" />
 </template>
 
 <script setup lang="ts">

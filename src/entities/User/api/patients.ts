@@ -1,12 +1,13 @@
 import {
-  createApiErrorGetById,
-  createApiErrorGetAll,
-  createApiErrorCreate,
-  createApiErrorUpdate,
-  createApiErrorDelete,
   BackendApi,
+  createApiErrorCreate,
+  createApiErrorDelete,
+  createApiErrorGetAll,
+  createApiErrorGetById,
+  createApiErrorPatch,
+  createApiErrorUpdate,
 } from "@/shared/api";
-import type { IUser } from "../model/types";
+import type { ICreateUser, IUser } from "../model/types";
 
 const PATIENTS_URL = "patients";
 
@@ -18,6 +19,7 @@ const errors = {
   create: createApiErrorCreate(patients_name),
   update: createApiErrorUpdate(patients_name),
   destroy: createApiErrorDelete(patients_name),
+  revert: createApiErrorPatch(patients_name),
 } as const;
 
 export const api = {
@@ -26,6 +28,7 @@ export const api = {
   create,
   update,
   destroy,
+  revert,
 } as const;
 
 async function getAll() {
@@ -44,7 +47,7 @@ async function getById(id: number) {
   }
 }
 
-async function create(data: IUser) {
+async function create(data: ICreateUser) {
   try {
     return await BackendApi.post(PATIENTS_URL, data);
   } catch {
@@ -52,7 +55,7 @@ async function create(data: IUser) {
   }
 }
 
-async function update(id: number, data: IUser) {
+async function update(id: number, data: ICreateUser) {
   try {
     return await BackendApi.put(PATIENTS_URL, id, data);
   } catch {
@@ -63,6 +66,14 @@ async function update(id: number, data: IUser) {
 async function destroy(id: number) {
   try {
     return await BackendApi.remove(PATIENTS_URL, id);
+  } catch {
+    throw new Error(errors.destroy);
+  }
+}
+
+async function revert(id: number) {
+  try {
+    return await BackendApi.patch(PATIENTS_URL, id, { deleted: false });
   } catch {
     throw new Error(errors.destroy);
   }

@@ -1,8 +1,8 @@
 import type { RouteRecordRaw } from "vue-router";
 import { SessionModel } from "@/entities/Session";
 import {
-  WorkspacePatientsPage,
   WorkspacePatientsButton,
+  WorkspacePatientsPage,
 } from "@/pages/workspace-area-patients";
 
 export const routeName: string = "WorkspacePatientsPage";

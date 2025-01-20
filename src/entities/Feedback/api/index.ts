@@ -14,7 +14,7 @@ export const api = {
 async function sendFeedback(data: IFeedback) {
   try {
     return await TelegramApi.sendMessage<IFeedbackResponse>(
-      `Мое имя ${data.name}. Свяжитесь со мной ${data.email} или ${data.phone}`
+      `Мое имя ${data.firstname}. Свяжитесь со мной ${data.email} или ${data.phone}`
     );
   } catch {
     throw new Error(errors.sendFeedback);

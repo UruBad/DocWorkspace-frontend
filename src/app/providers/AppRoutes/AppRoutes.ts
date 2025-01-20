@@ -6,8 +6,6 @@ interface IRoute<T extends object = {}> {
 }
 
 export class AppRoutes {
-  private constructor() {}
-
   static getLogin() {
     return getRoute(AppPages.login, {});
   }
@@ -34,6 +32,10 @@ export class AppRoutes {
 
   static getWorkspacePatients() {
     return getRoute(AppPages.workspacePatients, {});
+  }
+
+  static getWorkspacePrescriptions(id: number) {
+    return getRoute(AppPages.workspacePrescriptions, { id });
   }
 }
 

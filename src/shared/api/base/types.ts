@@ -9,4 +9,5 @@ export interface IBaseCRUDApiErrors extends IBaseReadApiErrors {
   create: TErrorMessage;
   update: TErrorMessage;
   destroy: TErrorMessage;
+  patch: TErrorMessage;
 }

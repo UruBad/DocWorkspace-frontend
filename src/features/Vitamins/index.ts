@@ -1,2 +1,2 @@
 export * from "./ui";
-export * as ViitaminsModel from "./model";
+export * as VitaminsModel from "./model";

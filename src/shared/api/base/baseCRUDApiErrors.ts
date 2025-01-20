@@ -1,5 +1,5 @@
 import type { IBaseCRUDApiErrors } from "./types";
-import { createBaseReadApiErrors } from "./baseReadApiErrors";
+import { createBaseReadApiErrors } from "@/shared/api";
 
 export function createBaseCRUDApiErrors(name: string): IBaseCRUDApiErrors {
   return {
@@ -7,6 +7,7 @@ export function createBaseCRUDApiErrors(name: string): IBaseCRUDApiErrors {
     create: createApiErrorCreate(name),
     update: createApiErrorUpdate(name),
     destroy: createApiErrorDelete(name),
+    patch: createApiErrorPatch(name),
   };
 }
 
@@ -20,4 +21,8 @@ export function createApiErrorUpdate(name: string) {
 
 export function createApiErrorDelete(name: string) {
   return `Failed to delete ${name}`;
+}
+
+export function createApiErrorPatch(name: string) {
+  return `Failed to patch ${name}`;
 }

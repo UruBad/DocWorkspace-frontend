@@ -1,3 +1,3 @@
-export * from "./ChangeGender";
-export * from "./ChangeUsername";
 export * from "./UserMenu";
+export * from "./UserActions";
+export * from "./UserForm";

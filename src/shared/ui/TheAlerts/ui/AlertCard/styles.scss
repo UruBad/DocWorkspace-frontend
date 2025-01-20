@@ -3,11 +3,21 @@
   width: 100%;
   cursor: pointer;
   padding: 30px;
+  color: var(--color__white);
 
-  &.success .cyber-card {
+  &::before {
+    background-color: var(--color__black);
+  }
+
+  &::after {
+    background-color: var(--color__black);
+  }
+
+  /* &.success .cyber-card {
     &::before {
       background-color: var(--color__green);
     }
+
     &::after {
       background-color: var(--color__green--dark);
     }
@@ -17,6 +27,7 @@
     &::before {
       background-color: var(--color__yellow);
     }
+
     &::after {
       background-color: var(--color__yellow--dark);
     }
@@ -26,19 +37,15 @@
     &::before {
       background-color: var(--color__blue);
     }
+
     &::after {
       background-color: var(--color__blue--dark);
     }
   }
 
   &.error .cyber-card {
-    &::before {
-      background-color: var(--color__red);
-    }
-    &::after {
-      background-color: var(--color__red--dark);
-    }
-  }
+
+  } */
 
   &__status {
     display: flex;

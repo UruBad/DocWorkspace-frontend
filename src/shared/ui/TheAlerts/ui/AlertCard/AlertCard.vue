@@ -1,7 +1,6 @@
 <template>
   <div class="alert-card" :class="alert.status">
     <CyberCard />
-    <h5 class="alert-card__status">{{ alert.status }}</h5>
     <p class="alert-card__body">{{ alert.message }}</p>
   </div>
 </template>
@@ -9,6 +8,7 @@
 <script setup lang="ts">
 import type { IAlert } from "../../model/types";
 import { CyberCard } from "@/shared/ui/cyber";
+
 defineProps<{
   alert: IAlert;
 }>();

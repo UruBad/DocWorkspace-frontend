@@ -12,3 +12,5 @@ export * from "./ButtonSocial";
 export * from "./ButtonClose";
 export * from "./ButtonAdd";
 export * from "./ButtonEdit";
+export * from "./ButtonRevert";
+export * from "./ButtonPrescription";

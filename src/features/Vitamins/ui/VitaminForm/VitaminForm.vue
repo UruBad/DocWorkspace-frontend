@@ -24,14 +24,15 @@ import { useForm } from "vee-validate";
 import { object } from "yup";
 import { toTypedSchema } from "@vee-validate/yup";
 import { useAlertsStore } from "@/shared/ui/TheAlerts";
-import { VitaminsModel } from "@/entities/Vitamins";
 import {
+  VeeCheckboxDeleted,
   VeeInputDescription,
   VeeInputImage,
   VeeInputLink,
   VeeInputName,
-  VeeCheckboxDeleted,
+  VitaminsModel,
 } from "@/entities/Vitamins";
+import { useVitaminForm } from "@/features/Vitamins/model";
 
 const emit = defineEmits(["completed"]);
 
@@ -42,7 +43,7 @@ interface IProps {
 const props = defineProps<IProps>();
 
 const { showError } = useAlertsStore();
-const { create, update } = VitaminsModel.useVitaminsStore();
+const { create, update } = useVitaminForm();
 
 const validationSchema = toTypedSchema(object(VitaminsModel.validator));
 

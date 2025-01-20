@@ -1,7 +1,7 @@
 <template>
   <VPopup
     v-if="store.visible"
-    header="Создание витамина"
+    :header="title"
     :visible="store.visible"
     @close="close"
   >
@@ -13,14 +13,16 @@
 import { VPopup } from "@/shared/ui/VPopup";
 import VitaminForm from "./VitaminForm.vue";
 import { useVitaminFormPopup } from "../../model";
-import { VitaminsModel } from "@/entities/Vitamins";
+import { computed } from "vue";
 
 const store = useVitaminFormPopup();
 const { vitamin, close } = store;
-const { getAll } = VitaminsModel.useVitaminsStore();
 
-function handleClose() {
-  getAll();
+const title = computed(() =>
+  vitamin?.id ? "Редактирование витамина" : "Создание витамина"
+);
+
+const handleClose = () => {
   close();
-}
+};
 </script>

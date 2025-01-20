@@ -1,10 +1,10 @@
 import { VitaminsModel } from "@/entities/Vitamins";
 
 export function useVitaminForm() {
-  const { getAll, create } = VitaminsModel.useVitaminsStore();
+  const { create, update } = VitaminsModel.useVitaminsStore();
 
   return {
-    getAll,
     create,
+    update,
   };
 }

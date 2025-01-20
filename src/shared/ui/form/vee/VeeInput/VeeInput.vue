@@ -13,10 +13,10 @@
 </template>
 
 <script setup lang="ts">
+import type { TInputType } from "../../base";
 import { VInput } from "../../base";
 import { useField } from "vee-validate";
 import { computed } from "vue";
-import type { TInputType } from "../../base";
 
 interface IVeeInput {
   label?: string;
