@@ -4,11 +4,11 @@ import type { IUser } from ".././types";
 import { useReactiveArray } from "@/shared/lib/use/base/useReactiveArray";
 
 interface IDoctorsStore {
-  getAll: () => void;
+  getAll: () => Promise<void>;
   create: (doctor: IUser) => Promise<IUser>;
   update: (id: number, vitamin: IUser) => Promise<IUser>;
-  destroy: (id: number) => Promise<void>;
-  revert: (id: number) => Promise<void>;
+  destroy: (id: number) => Promise<IUser>;
+  revert: (id: number) => Promise<IUser>;
   doctors: IUser[];
 }
 

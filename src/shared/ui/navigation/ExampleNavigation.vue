@@ -17,10 +17,6 @@ const appRoutes = useAppRoutes();
 
 const navList = [
   {
-    to: appRoutes.getUIKit(),
-    label: "UI kit",
-  },
-  {
     to: appRoutes.getNotFound(),
     label: "Empty",
   },

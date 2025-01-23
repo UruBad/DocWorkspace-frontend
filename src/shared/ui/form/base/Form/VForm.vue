@@ -32,5 +32,5 @@ withDefaults(defineProps<IVForm>(), {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

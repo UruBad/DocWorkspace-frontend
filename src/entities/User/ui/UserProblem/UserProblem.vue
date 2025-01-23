@@ -53,7 +53,9 @@ const classes = computed(() => {
       &__content {
         display: block;
         overflow: hidden;
-        transition: all ease-in-out 0.3s, opacity ease-in-out 0.3s;
+        transition:
+          all ease-in-out 0.3s,
+          opacity ease-in-out 0.3s;
         padding: 0 30px 20px;
         font-size: 16px;
         line-height: 1.55;

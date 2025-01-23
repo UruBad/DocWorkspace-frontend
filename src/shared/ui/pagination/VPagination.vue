@@ -86,14 +86,14 @@ const visibleDots = computed(() => {
 
 const pageForVisibleDotsLeft = computed(() => (isMobile.value ? 3 : 4));
 const visibleDotsLeft = computed(
-  () => visibleDots.value && props.modelValue > pageForVisibleDotsLeft.value
+  () => visibleDots.value && props.modelValue > pageForVisibleDotsLeft.value,
 );
 
 const pageForVisibleDotsRight = computed(() => (isMobile.value ? 2 : 3));
 const visibleDotsRight = computed(
   () =>
     visibleDots.value &&
-    props.modelValue < props.count - pageForVisibleDotsRight.value
+    props.modelValue < props.count - pageForVisibleDotsRight.value,
 );
 
 const pageForStartPages = computed(() => (isMobile.value ? 4 : 5));
@@ -117,6 +117,7 @@ function updateModelValue(num: number) {
 function getStartPages() {
   return getStartPagesList().filter(between);
 }
+
 function getStartPagesList() {
   if (isMobile.value) {
     return [2, 3, 4];
@@ -172,5 +173,5 @@ function between(page: number) {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

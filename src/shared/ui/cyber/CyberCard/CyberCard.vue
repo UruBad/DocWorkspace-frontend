@@ -14,5 +14,5 @@ withDefaults(defineProps<{ color?: EAppColor }>(), {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

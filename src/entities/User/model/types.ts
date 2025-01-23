@@ -1,3 +1,5 @@
+import type { IBaseItem } from "@/shared/api/backend";
+
 export enum ERole {
   ADMIN = "admin",
   DOCTOR = "doctor",
@@ -9,7 +11,7 @@ export enum EGender {
   FEMALE = "female",
 }
 
-export interface IUser {
+export interface IUser extends IBaseItem {
   id: number;
   lastname: string;
   firstname: string;

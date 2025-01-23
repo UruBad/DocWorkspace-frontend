@@ -12,7 +12,7 @@ export const useVitaminFormPopup = defineStore(NAMESPACE, () => {
   const { isBoolean: visible, setTrue: open, setFalse } = useIsBoolean(false);
 
   const show = (
-    item: VitaminsModel.IVitamin = VitaminsModel.DEFAULT_VITAMIN
+    item: VitaminsModel.IVitamin = VitaminsModel.DEFAULT_VITAMIN,
   ) => {
     vitamin.id = item.id;
     vitamin.name = item.name;

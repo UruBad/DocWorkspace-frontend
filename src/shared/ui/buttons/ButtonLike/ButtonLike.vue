@@ -22,5 +22,5 @@ withDefaults(defineProps<IButtonLike>(), {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

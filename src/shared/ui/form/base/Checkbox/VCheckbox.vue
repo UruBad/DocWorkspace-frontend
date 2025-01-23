@@ -52,5 +52,5 @@ function onChange() {
 </script>
 
 <style lang="scss">
-@import "styles/index";
+@use "styles/index";
 </style>

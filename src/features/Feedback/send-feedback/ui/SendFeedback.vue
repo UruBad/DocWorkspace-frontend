@@ -54,7 +54,7 @@ const onSubmit = handleSubmit(async (values) => {
     await FeedbackApi.sendFeedback(values);
     showModal(
       "Я получила ваш запрос и свяжусь с Вами как можно скорее.",
-      "Запись на прием"
+      "Запись на прием",
     );
     handleReset();
   } catch (e: unknown) {

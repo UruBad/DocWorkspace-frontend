@@ -16,11 +16,11 @@
 
 <script setup lang="ts">
 import AlertCard from "./AlertCard";
-import { useAlertsStore } from "../model";
+import { useAlertsStore } from "@/shared/ui/TheAlerts";
 
 const store = useAlertsStore();
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

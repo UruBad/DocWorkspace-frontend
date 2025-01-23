@@ -1,3 +1,6 @@
+@use "mixins" as *;
+@use "breakpoint" as *;
+
 * {
   box-sizing: content-box;
 }
@@ -6,6 +9,7 @@ html {
   scrollbar-gutter: stable;
   height: 100%;
 }
+
 body {
   position: relative;
   width: 100%;

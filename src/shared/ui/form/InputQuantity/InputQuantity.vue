@@ -33,11 +33,11 @@ import { computed } from "vue";
 const emit = defineEmits(["update:modelValue"]);
 
 interface IInputQuantity {
-  modelValue: number;
-  minValue?: number;
-  maxValue?: number;
-  label?: string;
   isDisabled?: boolean;
+  label?: string;
+  maxValue?: number;
+  minValue?: number;
+  modelValue: number;
 }
 
 const props = withDefaults(defineProps<IInputQuantity>(), {
@@ -49,11 +49,11 @@ const classes = computed(() => ({
 }));
 
 const isDisabledButtonMinus = computed(
-  () => props.modelValue === props.minValue
+  () => props.modelValue === props.minValue,
 );
 
 const isDisabledButtonPlus = computed(
-  () => props.modelValue === props.maxValue
+  () => props.modelValue === props.maxValue,
 );
 
 function onInput(value: string) {
@@ -88,5 +88,5 @@ function onMinus() {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

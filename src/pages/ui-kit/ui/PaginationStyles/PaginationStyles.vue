@@ -23,5 +23,5 @@ function setPage(value: number) {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

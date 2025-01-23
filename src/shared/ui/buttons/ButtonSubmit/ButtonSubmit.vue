@@ -25,13 +25,13 @@ import { SpinnerLoader } from "@/shared/ui/loaders";
 import type { EAppColor } from "@/shared/lib/types/app";
 
 interface IButtonSubmit {
-  txt?: string;
+  afterBgColor?: EAppColor;
+  beforeBgColor?: EAppColor;
   borderLeftIcon?: EBorderDecorateIcons;
   borderRightIcon?: EBorderDecorateIcons;
-  beforeBgColor?: EAppColor;
-  afterBgColor?: EAppColor;
-  isSubmitting: boolean;
   isDisabled?: boolean;
+  isSubmitting: boolean;
+  txt?: string;
 }
 
 withDefaults(defineProps<IButtonSubmit>(), {
@@ -43,5 +43,5 @@ withDefaults(defineProps<IButtonSubmit>(), {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

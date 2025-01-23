@@ -27,5 +27,5 @@ withDefaults(defineProps<IButtonSubmit>(), {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

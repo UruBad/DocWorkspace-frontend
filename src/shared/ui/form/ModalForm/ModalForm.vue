@@ -29,6 +29,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
+  title: "",
   isSubmitting: false,
   buttonSubmitTxt: "SAVE",
 });
@@ -39,5 +40,5 @@ function close() {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

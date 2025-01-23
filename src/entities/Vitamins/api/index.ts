@@ -65,7 +65,7 @@ async function update(id: number, data: IVitamin) {
 
 async function destroy(id: number) {
   try {
-    return await BackendApi.remove(VITAMINS_URL, id);
+    return await BackendApi.remove<IVitamin>(VITAMINS_URL, id);
   } catch {
     throw new Error(errors.destroy);
   }
@@ -73,7 +73,9 @@ async function destroy(id: number) {
 
 async function revert(id: number) {
   try {
-    return await BackendApi.patch(VITAMINS_URL, id, { deleted: false });
+    return await BackendApi.patch<IVitamin>(VITAMINS_URL, id, {
+      deleted: false,
+    });
   } catch {
     throw new Error(errors.destroy);
   }

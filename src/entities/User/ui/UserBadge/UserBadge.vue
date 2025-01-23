@@ -16,6 +16,7 @@ import { BASE_URL } from "@/shared/config";
 interface IProps {
   user: IUser;
 }
+
 const props = defineProps<IProps>();
 
 const avatarSrc = computed(() => {
@@ -28,5 +29,5 @@ const avatarSrc = computed(() => {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

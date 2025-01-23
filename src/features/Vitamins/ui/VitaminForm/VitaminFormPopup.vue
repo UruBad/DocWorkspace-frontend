@@ -19,7 +19,7 @@ const store = useVitaminFormPopup();
 const { vitamin, close } = store;
 
 const title = computed(() =>
-  vitamin?.id ? "Редактирование витамина" : "Создание витамина"
+  vitamin?.id ? "Редактирование витамина" : "Создание витамина",
 );
 
 const handleClose = () => {

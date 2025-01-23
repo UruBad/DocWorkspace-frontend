@@ -14,11 +14,12 @@
 
 <script setup lang="ts">
 import CyberTag from "../CyberTag";
+
 defineProps<{
   txt: string;
 }>();
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

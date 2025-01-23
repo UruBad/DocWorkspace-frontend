@@ -29,5 +29,5 @@ const styles = computed(() => ({
 </script>
 
 <style lang="scss" scoped>
-@import "styles";
+@use "styles";
 </style>

@@ -7,8 +7,8 @@ interface IVitaminsStore {
   getAll: () => void;
   create: (vitamin: IPrescription) => Promise<IPrescription>;
   update: (id: number, vitamin: IPrescription) => Promise<IPrescription>;
-  destroy: (id: number) => Promise<void>;
-  revert: (id: number) => Promise<void>;
+  destroy: (id: number) => Promise<IPrescription>;
+  revert: (id: number) => Promise<IPrescription>;
   prescriptions: IPrescription[];
 }
 
@@ -18,7 +18,7 @@ export const usePrescriptionsStore = defineStore(
   NAMESPACE,
   (): IVitaminsStore => {
     const { array: prescriptions, refresh } = useReactiveArray<IPrescription>(
-      []
+      [],
     );
 
     async function getAll() {
@@ -59,5 +59,5 @@ export const usePrescriptionsStore = defineStore(
       revert,
       prescriptions,
     };
-  }
+  },
 );

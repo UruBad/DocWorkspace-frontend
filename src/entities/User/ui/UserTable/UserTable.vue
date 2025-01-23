@@ -6,7 +6,7 @@
       :rows="rows"
     >
       <template #fullname="{ row }">
-        {{ `${(row as IUser).firstname} ${(row as IUser).lastname}` }}
+        {{ getFullname(row) }}
       </template>
       <template #deleted="{ row }">
         <IconCheck class="deleted_checked" v-if="isDeleted(row)" />
@@ -24,13 +24,15 @@ import type { IUser } from "@/entities/User/model";
 import { IconCheck } from "@/shared/ui/icons";
 
 interface IProps {
-  rows: [];
-  loadDataFunction: () => Promise<IUser[]>;
+  rows: IUser[];
+  loadDataFunction: () => Promise<void>;
 }
 
 defineProps<IProps>();
 
 const isDeleted = (row: IUser) => row.deleted;
+
+const getFullname = (row: IUser) => `${row.firstname} ${row.lastname}`;
 
 const headers: ITableHeader[] = [
   {

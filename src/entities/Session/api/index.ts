@@ -1,5 +1,5 @@
 import { BackendApi } from "@/shared/api";
-import { AxiosError, type AxiosPromise } from "axios";
+import { AxiosError } from "axios";
 import { getErrorMessageBy } from "./errors";
 import type { IAuthData, IAuthResponse, ITokenResponse } from "./types";
 
@@ -10,9 +10,7 @@ export const api = {
   getToken,
 };
 
-async function singIn(
-  data: IAuthData
-): Promise<AxiosPromise<IAuthResponse> | undefined> {
+async function singIn(data: IAuthData) {
   try {
     return await BackendApi.post<IAuthResponse>(`${AUTH_URL}/login`, data);
   } catch (e: unknown) {
@@ -32,7 +30,7 @@ async function singOut() {
   }
 }
 
-async function getToken(): Promise<AxiosPromise<ITokenResponse> | undefined> {
+async function getToken() {
   try {
     return await BackendApi.refresh<ITokenResponse>(`${AUTH_URL}/refresh`);
   } catch (e: unknown) {

@@ -65,7 +65,7 @@ async function update(id: number, data: IPrescription) {
 
 async function destroy(id: number) {
   try {
-    return await BackendApi.remove(PRESCRIPTIONS_URL, id);
+    return await BackendApi.remove<IPrescription>(PRESCRIPTIONS_URL, id);
   } catch {
     throw new Error(errors.destroy);
   }
@@ -73,7 +73,9 @@ async function destroy(id: number) {
 
 async function revert(id: number) {
   try {
-    return await BackendApi.patch(PRESCRIPTIONS_URL, id, { deleted: false });
+    return await BackendApi.patch<IPrescription>(PRESCRIPTIONS_URL, id, {
+      deleted: false,
+    });
   } catch {
     throw new Error(errors.destroy);
   }

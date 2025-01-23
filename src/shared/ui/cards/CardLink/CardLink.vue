@@ -11,9 +11,10 @@ import type { RouteLocationRaw } from "vue-router";
 interface IProps {
   to: RouteLocationRaw;
 }
+
 defineProps<IProps>();
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

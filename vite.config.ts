@@ -23,8 +23,12 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // eslint-disable-next-line quotes
-        additionalData: '@use "@/app/styles/breakpoint.scss" as *;',
+        api: "modern",
+        quietDeps: true,
+        additionalData: `
+          @use "@/app/styles/breakpoint.scss" as *;
+          @use "@/app/styles/mixins.scss" as *;
+        `,
       },
     },
   },

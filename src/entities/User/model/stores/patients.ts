@@ -4,11 +4,11 @@ import type { ICreateUser, IUser } from ".././types";
 import { useReactiveArray } from "@/shared/lib/use/base/useReactiveArray";
 
 interface IPatientsStore {
-  getAll: () => void;
+  getAll: () => Promise<void>;
   create: (patient: ICreateUser) => Promise<IUser>;
   update: (id: number, patient: ICreateUser) => Promise<IUser>;
-  destroy: (id: number) => Promise<void>;
-  revert: (id: number) => Promise<void>;
+  destroy: (id: number) => Promise<IUser>;
+  revert: (id: number) => Promise<IUser>;
   patients: IUser[];
 }
 

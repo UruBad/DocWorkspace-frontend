@@ -4,11 +4,11 @@ import type { IVitamin } from "./types";
 import { useReactiveArray } from "@/shared/lib/use/base/useReactiveArray";
 
 interface IVitaminsStore {
-  getAll: () => void;
+  getAll: () => Promise<void>;
   create: (vitamin: IVitamin) => Promise<IVitamin>;
   update: (id: number, vitamin: IVitamin) => Promise<IVitamin>;
-  destroy: (id: number) => Promise<void>;
-  revert: (id: number) => Promise<void>;
+  destroy: (id: number) => Promise<IVitamin>;
+  revert: (id: number) => Promise<IVitamin>;
   vitamins: IVitamin[];
 }
 

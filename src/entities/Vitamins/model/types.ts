@@ -1,4 +1,6 @@
-export interface IVitamin {
+import type { IBaseItem } from "@/shared/api/backend";
+
+export interface IVitamin extends IBaseItem {
   id: number;
   name: string;
   description: string;

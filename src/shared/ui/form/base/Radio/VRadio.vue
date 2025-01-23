@@ -49,5 +49,5 @@ function onChange(item: IRadioItem) {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

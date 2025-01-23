@@ -12,5 +12,5 @@ const number = generateNumber(10);
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>

@@ -27,5 +27,5 @@ export const useTheBurgerMenuStore = defineStore(
       toggleBurgerMenu,
       closeBurgerMenu,
     };
-  }
+  },
 );

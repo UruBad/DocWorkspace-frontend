@@ -11,5 +11,5 @@ import { LoginForm } from "@/features/auth";
 </script>
 
 <style lang="scss">
-@import "./styles";
+@use "./styles";
 </style>

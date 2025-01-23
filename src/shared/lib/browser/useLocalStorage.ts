@@ -7,7 +7,7 @@ interface IUseLocalStorage<T> {
 
 export function useLocalStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): IUseLocalStorage<T> {
   const keyLS = `${APP_NAME}:${key}`;
 
@@ -30,7 +30,7 @@ export function useLocalStorage<T>(
   function setLSValue(value: T, isJson: boolean = true): void {
     window.localStorage.setItem(
       keyLS,
-      isJson ? JSON.stringify(value) : `${value}`
+      isJson ? JSON.stringify(value) : `${value}`,
     );
   }
 

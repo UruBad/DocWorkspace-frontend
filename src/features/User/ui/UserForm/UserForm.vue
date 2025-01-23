@@ -55,7 +55,7 @@ const { handleSubmit, isSubmitting } = useForm({
 });
 
 const isPatient = computed(
-  () => props.patient?.role === UserModel.ERole.PATIENT
+  () => props.patient?.role === UserModel.ERole.PATIENT,
 );
 
 const onSubmit = handleSubmit(async (formData) => {

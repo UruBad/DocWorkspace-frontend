@@ -9,7 +9,7 @@ export const FB_API_KEY = getEnvVar("VITE_APP_FB_API_KEY");
 export const FB_API_URL = getEnvVar("VITE_APP_FB_API_URL");
 export const FB_ACCOUNTS_API_URL = getEnvVar("VITE_APP_FB_ACCOUNTS_API_URL");
 export const FB_SECURE_TOKEN_API_URL = getEnvVar(
-  "VITE_APP_FB_SECURE_TOKEN_API_URL"
+  "VITE_APP_FB_SECURE_TOKEN_API_URL",
 );
 
 export const TOKEN_KEY = "jwt-token";
@@ -26,10 +26,10 @@ export const BASE_URL = isProdEnv
 export const FEEDBACK_API_KEY = getEnvVar("VITE_APP_FB_API_KEY");
 export const FEEDBACK_API_URL = getEnvVar("VITE_APP_FB_API_URL");
 export const FEEDBACK_ACCOUNTS_API_URL = getEnvVar(
-  "VITE_APP_FB_ACCOUNTS_API_URL"
+  "VITE_APP_FB_ACCOUNTS_API_URL",
 );
 export const FEEDBACK_SECURE_TOKEN_API_URL = getEnvVar(
-  "VITE_APP_FB_SECURE_TOKEN_API_URL"
+  "VITE_APP_FB_SECURE_TOKEN_API_URL",
 );
 
 export const EMAIL_ACCESS_TOKEN = getEnvVar("VITE_APP_MAIL_ACCESS_TOKEN");
@@ -37,7 +37,7 @@ export const MAIL_REFRESH_TOKEN = getEnvVar("VITE_APP_MAIL_REFRESH_TOKEN");
 
 export const TELEGRAM_API_URL = getEnvVar("VITE_APP_TELEGRAM_API_URL");
 export const TELEGRAM_ACCESS_TOKEN = getEnvVar(
-  "VITE_APP_TELEGRAM_ACCESS_TOKEN"
+  "VITE_APP_TELEGRAM_ACCESS_TOKEN",
 );
 
 export const TELEGRAM_CHAT_ID = getEnvVar("VITE_APP_TELEGRAM_CHAT_ID");

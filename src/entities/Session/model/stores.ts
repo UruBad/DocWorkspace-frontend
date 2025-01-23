@@ -10,18 +10,16 @@ import { api } from "../api";
 import { useAlertsStore } from "@/shared/ui/TheAlerts";
 import useTimeout from "@/shared/lib/use/useTimeout";
 import type { ISessionUser, ITokens } from "./types";
-import { EGender, ERole } from "@/entities/User/model/types";
+import { DEFAULT_USER } from "@/entities/User/model";
 
 const namespaced = "session";
-
-const defaultUserName = "Anonymous";
 
 export const useSessionStore = defineStore(namespaced, () => {
   const { showError } = useAlertsStore();
 
   const { value: tokenValue, setLSValue: setLSToken } = useLocalStorage(
     TOKEN_KEY,
-    ""
+    "",
   );
 
   const token = ref(tokenValue);
@@ -75,20 +73,7 @@ export const useSessionStore = defineStore(namespaced, () => {
     setTimeoutGetToken();
   }
 
-  const user = reactive<ISessionUser>({
-    aptitudes: [],
-    problems: [],
-    services: [],
-    id: 0,
-    username: defaultUserName,
-    role: ERole.PATIENT,
-    gender: EGender.MALE,
-    avatar: "",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    lastname: "",
-    firstname: "",
-  });
+  const user = reactive<ISessionUser>({ ...DEFAULT_USER });
 
   const isAuth = computed(() => Boolean(token.value));
 
@@ -109,20 +94,7 @@ export const useSessionStore = defineStore(namespaced, () => {
     removeToken();
     removeRefreshToken();
 
-    setUser({
-      aptitudes: [],
-      problems: [],
-      services: [],
-      id: 0,
-      username: defaultUserName,
-      gender: EGender.MALE,
-      avatar: "",
-      role: ERole.PATIENT,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      lastname: "",
-      firstname: "",
-    });
+    setUser({ ...DEFAULT_USER });
   }
 
   return {

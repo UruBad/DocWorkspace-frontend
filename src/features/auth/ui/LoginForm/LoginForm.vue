@@ -43,7 +43,7 @@ const validationSchema = toTypedSchema(
   object({
     username: string().required("введите логин"),
     password: string().required("введите пароль"),
-  })
+  }),
 );
 
 const { handleSubmit, isSubmitting } = useForm({ validationSchema });

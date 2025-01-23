@@ -82,8 +82,12 @@ const click = (anchor: string) => {
           }
 
           &-link {
-            -webkit-transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            -webkit-transition:
+              color 0.3s ease-in-out,
+              opacity 0.3s ease-in-out;
+            transition:
+              color 0.3s ease-in-out,
+              opacity 0.3s ease-in-out;
             position: relative;
             text-decoration: none;
             color: var(--color__black);
@@ -111,7 +115,8 @@ const click = (anchor: string) => {
               width: 100%;
               height: 100%;
               border-bottom: 1px solid var(--color__light-blue);
-              -webkit-box-shadow: inset 0px -1px 0px 0px var(--color__light-blue);
+              -webkit-box-shadow: inset 0px -1px 0px 0px
+                var(--color__light-blue);
               -moz-box-shadow: inset 0px -1px 0px 0px var(--color__light-blue);
               box-shadow: inset 0px -1px 0px 0px var(--color__light-blue);
               -webkit-transition: all 0.3s ease;

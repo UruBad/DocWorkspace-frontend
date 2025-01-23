@@ -5,7 +5,7 @@ interface IUseInterval {
 
 export default function useInterval(
   handler: () => void,
-  timeout: number
+  timeout: number,
 ): IUseInterval {
   let intervalId: number;
 

@@ -20,14 +20,14 @@ function splice<T>(idx: number, array: T[]) {
 
 export function findBy<T extends IObject>(
   id: TValue,
-  array: T[]
+  array: T[],
 ): T | undefined {
   return array.find((item) => item.id === id);
 }
 
 export function findSimpleBy(
   value: TValue,
-  array: TValue[]
+  array: TValue[],
 ): TValue | undefined {
   return array.find((item) => item === value);
 }

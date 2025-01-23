@@ -69,5 +69,5 @@ function close() {
 }
 </script>
 <style lang="scss">
-@import "style";
+@use "style";
 </style>

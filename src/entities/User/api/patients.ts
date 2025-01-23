@@ -49,7 +49,7 @@ async function getById(id: number) {
 
 async function create(data: ICreateUser) {
   try {
-    return await BackendApi.post(PATIENTS_URL, data);
+    return await BackendApi.post<IUser>(PATIENTS_URL, data);
   } catch {
     throw new Error(errors.create);
   }
@@ -57,7 +57,7 @@ async function create(data: ICreateUser) {
 
 async function update(id: number, data: ICreateUser) {
   try {
-    return await BackendApi.put(PATIENTS_URL, id, data);
+    return await BackendApi.put<IUser>(PATIENTS_URL, id, data);
   } catch {
     throw new Error(errors.update);
   }
@@ -65,7 +65,7 @@ async function update(id: number, data: ICreateUser) {
 
 async function destroy(id: number) {
   try {
-    return await BackendApi.remove(PATIENTS_URL, id);
+    return await BackendApi.remove<IUser>(PATIENTS_URL, id);
   } catch {
     throw new Error(errors.destroy);
   }
@@ -73,7 +73,7 @@ async function destroy(id: number) {
 
 async function revert(id: number) {
   try {
-    return await BackendApi.patch(PATIENTS_URL, id, { deleted: false });
+    return await BackendApi.patch<IUser>(PATIENTS_URL, id, { deleted: false });
   } catch {
     throw new Error(errors.destroy);
   }

@@ -1,4 +1,4 @@
-@import 'mixins';
+@use 'mixins' as *;
 
 .input {
   position: relative;
@@ -34,6 +34,7 @@
     &:focus-visible {
       @include inputFocus;
     }
+
     &:hover {
       @include inputHover;
     }
@@ -79,6 +80,7 @@
       @include inputFocus;
     }
   }
+
   &.hover {
     .input__field {
       @include inputHover;

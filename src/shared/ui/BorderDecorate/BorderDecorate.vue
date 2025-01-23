@@ -47,5 +47,5 @@ const getComponentBy = computed(() => (name: string): Component | null => {
 </script>
 
 <style lang="scss">
-@import "styles";
+@use "styles";
 </style>
